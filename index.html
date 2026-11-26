@@ -6,54 +6,97 @@
 <title>ระบบบันทึกการนิเทศเพื่อพัฒนาสมรรถนะการจัดการเรียนรู้สำหรับครูโรงเรียนเอกชนในระบบ - กลุ่มพัฒนาคุณภาพและมาตรฐานการศึกษา สำนักงานการศึกษาเอกชนจังหวัดนราธิวาส</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#12303a;--mute:#5b727a;--sea:#0e5a6b;--sea2:#0a3f4c;--sun:#e8a317;--bg:#f2f6f6;--card:#fff;--line:#d3dfe1;--ok:#2f7d4f;--bad:#b3402f;--r:10px}
+:root{--ink:#12303a;--mute:#5b727a;--sea:#0e5a6b;--sea2:#0a3f4c;--sun:#e8a317;--bg:#eef4f4;--card:#fff;--line:#d3dfe1;--ok:#2f7d4f;--bad:#b3402f;--info:#2a568e;--r:12px;--sh:0 1px 2px #12303a0d,0 6px 18px #12303a0f}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 'IBM Plex Sans Thai',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-header{background:var(--sea2);color:#fff;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:4px solid var(--sun)}
-header h1{font-size:18px;margin:0;flex:1;min-width:220px;line-height:1.3}
+header{background:linear-gradient(120deg,var(--sea2),var(--sea));color:#fff;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-bottom:4px solid var(--sun)}
+header .logo{width:42px;height:42px;border-radius:12px;background:#ffffff1f;display:grid;place-items:center;font-size:22px;flex:none}
+header h1{font-size:17px;margin:0;flex:1;min-width:220px;line-height:1.35}
 header small{display:block;font-weight:400;opacity:.8;font-size:13px}
-nav{display:flex;gap:4px;padding:8px 16px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto}
-nav button{border:0;background:none;padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap;color:var(--mute);font-weight:500}
+.hb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.who{display:flex;flex-direction:column;line-height:1.2;text-align:right;margin-right:4px}
+.who small{font-size:12px}
+.bell{position:relative;background:#ffffff1f;border:1px solid #ffffff40;color:#fff;border-radius:99px;padding:4px 12px;cursor:pointer;font-size:16px}
+.bd{display:inline-block;min-width:20px;padding:0 6px;border-radius:99px;background:var(--bad);color:#fff;font-size:12px;font-weight:700;line-height:20px;text-align:center;margin-left:4px}
+nav{display:flex;gap:4px;padding:8px 16px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #12303a10}
+nav button{border:0;background:none;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;color:var(--mute);font-weight:500}
+nav button:hover{background:#eef4f4}
 nav button.on{background:var(--sea);color:#fff}
-main{max-width:1060px;margin:0 auto;padding:20px 16px 40px}
-h2{margin:0 0 14px;font-size:22px}
-h3{margin:18px 0 8px;font-size:17px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
+main{max-width:1120px;margin:0 auto;padding:22px 16px 40px}
+h2{margin:0 0 14px;font-size:22px;color:var(--sea2)}
+h3{margin:18px 0 8px;font-size:17px;color:var(--sea2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:14px;box-shadow:var(--sh)}
+.card>h3:first-child{margin-top:0}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .sp{flex:1}
-.btn{border:1px solid var(--sea);background:var(--sea);color:#fff;border-radius:8px;padding:7px 14px;cursor:pointer;font-weight:500}
+.btn{border:1px solid var(--sea);background:var(--sea);color:#fff;border-radius:8px;padding:7px 14px;cursor:pointer;font-weight:500;text-decoration:none;display:inline-block;transition:filter .15s}
+.btn:hover{filter:brightness(1.1)}
 .btn.alt{background:#fff;color:var(--sea)}
 .btn.bad{background:#fff;color:var(--bad);border-color:var(--bad)}
+.btn.meet{background:#1a73e8;border-color:#1a73e8}
 .btn.sm{padding:3px 10px;font-size:14px}
 .btn:disabled{opacity:.5}
 input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
 textarea{min-height:70px;resize:vertical}
 label{display:block;font-size:14px;font-weight:600;margin:10px 0 3px;color:var(--sea2)}
 .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 14px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
-.stat{background:#fff;border:1px solid var(--line);border-left:5px solid var(--sun);border-radius:var(--r);padding:12px 14px}
-.stat b{display:block;font-size:30px;line-height:1.1;color:var(--sea)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.kpi{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--sh)}
+.kpi .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,#fff7df,#e3f1f2);flex:none}
+.kpi b{font-size:26px;line-height:1.1;color:var(--sea2);display:block}
+.kpi span{color:var(--mute);font-size:14px}
 table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
 th{background:#e8f0f1;font-weight:600}
+tr:hover td{background:#f8fbfb}
 .wrap{overflow-x:auto}
-.tag{display:inline-block;padding:1px 10px;border-radius:99px;font-size:13px;font-weight:600;background:#e8f0f1;color:var(--sea2)}
-.tag.ok{background:#dcefe3;color:var(--ok)}.tag.warn{background:#fbecc6;color:#7a5400}.tag.bad{background:#f6dcd7;color:var(--bad)}
-.bar{height:14px;background:#e8f0f1;border-radius:7px;overflow:hidden;min-width:100px}
-.bar i{display:block;height:100%;background:var(--sea)}
+.tag{display:inline-block;padding:1px 10px;border-radius:99px;font-size:13px;font-weight:600;background:#e8f0f1;color:var(--sea2);white-space:nowrap}
+.tag.ok{background:#dcefe3;color:var(--ok)}.tag.warn{background:#fbecc6;color:#7a5400}.tag.bad{background:#f6dcd7;color:var(--bad)}.tag.info{background:#dde8f6;color:var(--info)}.tag.done{background:#e6ebec;color:#4b5f64}
+.bar{height:14px;background:#e8f0f1;border-radius:7px;overflow:hidden;min-width:80px}
+.bar i{display:block;height:100%;background:var(--sea);border-radius:7px}
 .mute{color:var(--mute);font-size:14px}
-.empty{padding:28px;text-align:center;color:var(--mute);border:2px dashed var(--line);border-radius:var(--r)}
+.empty{padding:28px;text-align:center;color:var(--mute);border:2px dashed var(--line);border-radius:var(--r);background:#fff}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filters input,.filters select{max-width:300px}
+.alert{border-radius:10px;padding:10px 14px;margin:8px 0;font-size:15px}
+.alert.ok{background:#dcefe3;color:#1d5a37}.alert.bad{background:#f6dcd7;color:#8a2d20}.alert.warn{background:#fff3d6;color:#6b4a00;border:1px solid #ecce80}.alert.info{background:#dde8f6;color:var(--info)}
 .rub{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
 .rub .opt{display:flex;gap:4px}
 .rub .opt label{margin:0;display:flex;align-items:center;gap:4px;font-weight:500;border:1px solid var(--line);border-radius:8px;padding:3px 10px;cursor:pointer}
 .rub .opt input{width:auto}
-dialog{border:0;border-radius:14px;padding:20px;width:min(760px,94vw);max-height:92vh;box-shadow:0 20px 60px #0006}
+.rbar{display:grid;grid-template-columns:minmax(150px,1.3fr) 2fr 48px;gap:10px;align-items:center;margin:7px 0;font-size:14px}
+.sbar{cursor:pointer;border-radius:8px;padding:4px 6px;margin:2px -6px}
+.sbar:hover{background:#eef4f4}
+.lg{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.appt{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;box-shadow:var(--sh)}
+.appt.s-warn{border-left-color:var(--sun)}.appt.s-ok{border-left-color:var(--ok)}.appt.s-info{border-left-color:var(--info)}.appt.s-bad{border-left-color:var(--bad);opacity:.85}.appt.s-done{border-left-color:#8aa}
+.dbox{min-width:60px;text-align:center;background:#e3f1f2;border-radius:10px;padding:6px 4px;align-self:flex-start}
+.dbox b{display:block;font-size:24px;line-height:1.1;color:var(--sea2)}
+.dbox span{font-size:12px;color:var(--mute)}
+.mini{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.mini:last-child{border:0}
+.mini .dbox{min-width:50px;padding:3px}.mini .dbox b{font-size:18px}
+.sec-h{display:flex;align-items:center;gap:8px;margin:20px 0 10px;font-size:16px;font-weight:700;color:var(--sea2)}
+details.sgrp{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:var(--sh)}
+details.sgrp>summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#f7fafa}
+details.sgrp>summary::-webkit-details-marker{display:none}
+details.sgrp>summary::before{content:'▸';color:var(--sea);transition:transform .2s}
+details.sgrp[open]>summary::before{transform:rotate(90deg)}
+details.sgrp .in{padding:4px 14px 14px}
+.trow{display:grid;grid-template-columns:2fr 1.4fr 1.2fr auto;gap:8px;margin-bottom:8px}
+@media (max-width:600px){.trow{grid-template-columns:1fr 1fr}.who{display:none}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.steps div{background:#f2f8f8;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px}
+.welcome{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:linear-gradient(135deg,#fff7df,#e3f1f2);border:2px solid var(--sun);border-radius:16px;padding:16px 20px;margin-bottom:14px}
+dialog{border:0;border-radius:16px;padding:22px;width:min(780px,94vw);max-height:92vh;box-shadow:0 20px 60px #0006}
 dialog::backdrop{background:#0a3f4ca0}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--sea2);color:#fff;padding:10px 20px;border-radius:99px;display:none;z-index:99}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--sea2);color:#fff;padding:10px 20px;border-radius:99px;display:none;z-index:99;box-shadow:var(--sh)}
 #toast.bad{background:var(--bad)}
-.login{max-width:420px;margin:7vh auto 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;border-top:6px solid var(--sun)}
+.login{max-width:430px;margin:7vh auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;border-top:6px solid var(--sun);box-shadow:var(--sh)}
 .login .intro{text-align:center;color:var(--mute);line-height:1.6;margin-bottom:8px}
 .login h2{text-align:center;color:var(--sea2);margin-top:8px}
 .seg{display:flex;border:1px solid var(--sea);border-radius:8px;overflow:hidden;margin:12px 0}
@@ -77,7 +120,7 @@ footer{text-align:center;padding:24px 16px;margin-top:16px;color:#64748b;font-si
 .pad{display:block;width:100%;aspect-ratio:3/1;border:1px dashed var(--sea);border-radius:8px;background:#fff;touch-action:none;cursor:crosshair}
 .padbox{border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:10px}
 @page{size:A4;margin:14mm}
-@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}tr{break-inside:avoid}header,nav,footer,.noprint,#toast{display:none!important}body{background:#fff}body:has(dialog[open]) #app{display:none}dialog{position:static!important;inset:auto!important;margin:0!important;box-shadow:none;width:100%;max-width:none;height:auto;max-height:none;overflow:visible;padding:0}dialog::backdrop{display:none}main{padding:0}}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}tr{break-inside:avoid}header,nav,footer,.noprint,#toast{display:none!important}body{background:#fff}body:has(dialog[open]) #app{display:none}dialog{position:static!important;inset:auto!important;margin:0!important;box-shadow:none;width:100%;max-width:none;height:auto;max-height:none;overflow:visible;padding:0}dialog::backdrop{display:none}main{padding:0}.card,.kpi,.appt{box-shadow:none}}
 @media (prefers-reduced-motion:no-preference){#toast{transition:opacity .2s}}
 </style>
 </head>
@@ -105,26 +148,64 @@ const SHORT = ['เกริ่นนำและเป้าหมาย','ต�
 const GRADES = ['ระดับปฐมวัย', ...[1,2,3,4,5,6].map(n => 'ประถมศึกษาปีที่ ' + n), ...[1,2,3,4,5,6].map(n => 'มัธยมศึกษาปีที่ ' + n)];
 const PRE = [['preGoal','เป้าหมายของคาบ'],['preFocus','ประเด็นที่ต้องการให้สังเกต'],['preNeed','สิ่งที่ต้องการให้ช่วยเหลือ']];
 const SUP_NAME = 'นางสาวฮานีดา เมาะมิง', SUP_POS = 'ศึกษานิเทศก์';
+const ROLE = {sup:'ศึกษานิเทศก์', head:'ผู้บริหารโรงเรียน', teacher:'ครู'};
+const LVN = ['ดีเยี่ยม','ดี','พอใช้','ควรปรับปรุง'], LVC = ['#2f7d4f','#7cbf94','#e8a317','#b3402f'];
+// สถานะนัดโค้ช: รอยืนยัน (ครูขอ) → ยืนยันแล้ว / เลื่อนนัด (ศน.) → เสร็จสิ้น / ยกเลิก
+const STC = {'รอยืนยัน':'warn','ยืนยันแล้ว':'ok','นัดหมาย':'ok','เลื่อนนัด':'info','เสร็จสิ้น':'done','ยกเลิก':'bad'};
+const BASE_TITLE = document.title;
 let GAS = localStorage.getItem('gas') || DEFAULT_GAS_URL;
-let S = JSON.parse(sessionStorage.getItem('s') || 'null'), D = {}, tab = '', q = '';
+let S = JSON.parse(sessionStorage.getItem('s') || 'null'), D = {}, tab = '', q = '', fs = '', lastN = null;
 const $ = s => document.querySelector(s);
 const L = c => D[c] || [];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const today = () => { const d = new Date(); return new Date(d - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
 const fd = d => d ? new Date(d).toLocaleDateString('th-TH', {day:'numeric', month:'short', year:'2-digit'}) : '-';
+const fdl = d => d ? new Date(d).toLocaleDateString('th-TH', {weekday:'short', day:'numeric', month:'short', year:'2-digit'}) : '-';
 const isSup = () => S && S.role === 'sup';
 const isHead = () => S && S.role === 'head';
+const isT = () => S && !isSup() && !isHead();
 const myEv = () => 'evid/' + S.uid + '/items';
 const nl = s => esc(s).replace(/\n/g, '<br>');
 const mine = x => x.tuid === S.uid || String(x.teacher || '').trim() === S.name;
 const tmatch = (x, t) => x.tuid === t.id || String(x.teacher || '').trim() === t.name;
-// รายการนี้เป็นของครูในโรงเรียนที่ผู้บริหารล็อกอินอยู่หรือไม่
 const inSchool = x => String(x.school || '').trim() === S.name || L('roster').some(t => t.school === S.name && tmatch(x, t));
-// ศน. เห็นทั้งหมด / ผู้บริหารเห็นของโรงเรียนตน / ครูเห็นของตนเอง (ฝั่งเซิร์ฟเวอร์ต้องกรองซ้ำ)
 const canSee = x => isSup() || (isHead() ? inSchool(x) : mine(x));
+const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0;
+const grp = (a, k) => a.reduce((m, x) => { const g = k(x); (m[g] = m[g] || []).push(x); return m; }, {});
+const th = (a, b) => String(a || '').localeCompare(String(b || ''), 'th');
+const schOf = x => x.school || (L('roster').find(t => tmatch(x, t)) || {}).school || '';
+const schools = () => [...new Set([...L('school').map(s => s.name), ...L('roster').map(t => t.school)].filter(Boolean))].sort(th);
+const myRoster = () => L('roster').find(t => t.id === S.uid) || {};
 
-function toast(m, bad) { const t = $('#toast'); t.textContent = m; t.className = bad ? 'bad' : ''; t.style.display = 'block'; clearTimeout(t._t); t._t = setTimeout(() => t.style.display = 'none', 3200); }
+/* ---------- นัดโค้ช: เวลา/ชนกัน ---------- */
+const toMin = t => { const [h, m] = String(t || '00:00').split(':').map(Number); return (h || 0) * 60 + (m || 0); };
+const endT = x => { const m = toMin(x.time) + (+x.dur || 60); return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+const SCH_ACTIVE = x => !['เสร็จสิ้น','ยกเลิก'].includes(x.status);
+const isConf = x => ['ยืนยันแล้ว','นัดหมาย','เลื่อนนัด'].includes(x.status);
+const byDT = (a, b) => ((a.date || '') + (a.time || '')).localeCompare((b.date || '') + (b.time || ''));
+const conflicts = r => L('sched').filter(x => x.id !== r.id && SCH_ACTIVE(x) && x.date === r.date
+  && toMin(x.time) < toMin(r.time) + (+r.dur || 60) && toMin(r.time) < toMin(x.time) + (+x.dur || 60));
+const modeOf = x => x.mode || (/meet\.google/.test((x.meet || '') + (x.place || '')) ? 'online' : 'onsite');
+const meetOf = x => x.meet || (/^https:\/\/meet\.google\.com\//.test(x.place || '') ? x.place : '');
+const modeTxt = m => m === 'onsite' ? '🏫 พบที่โรงเรียน' : '💻 Google Meet';
+const okMeet = s => /^https:\/\/meet\.google\.com\/[a-z0-9-]+/i.test(String(s || '').trim());
+const stTag = x => `<span class="tag ${STC[x.status] || ''}">${esc(x.status === 'นัดหมาย' ? 'ยืนยันแล้ว' : x.status)}</span>`;
+const gcal = x => {
+  const d = (x.date || '').replace(/-/g, ''), s = d + 'T' + String(x.time || '09:00').replace(':', '') + '00', e = d + 'T' + endT(x).replace(':', '') + '00';
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('โค้ช: ' + (x.topic || '')) + '&dates=' + s + '/' + e
+    + '&ctz=Asia/Bangkok&details=' + encodeURIComponent(meetOf(x) || '') + '&location=' + encodeURIComponent(meetOf(x) || x.place || '');
+};
+// รายการแจ้งเตือน: ศน. = คำขอรอยืนยัน + ครูยกเลิก / ครู = ศน. ยืนยัน เลื่อน หรือปฏิเสธ
+const notifItems = () => !S || isHead() ? [] : isSup()
+  ? L('sched').filter(x => x.status === 'รอยืนยัน' || (x.status === 'ยกเลิก' && x.cancelBy === 'teacher' && !x.seenS && x.date >= today()))
+  : L('sched').filter(x => mine(x) && x.date >= today() && (x.status === 'เลื่อนนัด' || (!x.seenT && ['ยืนยันแล้ว','นัดหมาย','ยกเลิก'].includes(x.status) && x.cancelBy !== 'teacher')));
+
+function toast(m, bad) { const t = $('#toast'); t.textContent = m; t.className = bad ? 'bad' : ''; t.style.display = 'block'; clearTimeout(t._t); t._t = setTimeout(() => t.style.display = 'none', 3600); }
+function notify(m) {
+  toast('🔔 ' + m);
+  try { if ('Notification' in window && Notification.permission === 'granted') new Notification('ระบบนิเทศ สช.นราธิวาส', {body: m}); } catch (e) {}
+}
 
 async function api(b) {
   if (!GAS) throw Error('ยังไม่ได้ตั้งค่า URL ของ Web App');
@@ -157,25 +238,47 @@ function calc(sc) {
 }
 const lvl = a => a >= 3.5 ? ['ดีเยี่ยม','ok'] : a >= 2.5 ? ['ดี','ok'] : a >= 1.5 ? ['พอใช้','warn'] : ['ควรปรับปรุง','bad'];
 const lvTag = a => { const l = lvl(a); return `<span class="tag ${l[1]}">${a.toFixed(2)} ${l[0]}</span>`; };
+const colOf = v => v >= 3.5 ? LVC[0] : v >= 2.5 ? LVC[1] : v >= 1.5 ? LVC[2] : LVC[3];
+
+/* ---------- ส่วนประกอบร่วม ---------- */
+const schoolSel = () => `<select id="fs" aria-label="กรองตามโรงเรียน"><option value="">🏫 ทุกโรงเรียน (${schools().length})</option>${schools().map(s => `<option value="${esc(s)}" ${s === fs ? 'selected' : ''}>${esc(s)} · ${L('roster').filter(t => t.school === s).length} คน</option>`).join('')}</select>`;
+const searchBox = ph => `<input id="q" value="${esc(q)}" placeholder="${ph}" aria-label="ค้นหา">`;
+const kpi = (ic, v, lab, sub) => `<div class="kpi"><div class="ic">${ic}</div><div><b>${v}</b><span>${lab}</span>${sub ? `<div class="mute" style="font-size:12px">${sub}</div>` : ''}</div></div>`;
+function teacherOpts(sel) {
+  const G = grp(L('roster'), t => t.school || '(ไม่ระบุโรงเรียน)');
+  return '<option value="">เลือกครู</option>' + Object.keys(G).sort(th).map(s => `<optgroup label="🏫 ${esc(s)}">${G[s].sort((a, b) => th(a.name, b.name)).map(t => `<option value="${esc(t.id)}" ${sel === t.id ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}</optgroup>`).join('');
+}
+const durSel = v => `<select name="dur">${[30,45,60,90,120].map(n => `<option value="${n}" ${(+v || 60) === n ? 'selected' : ''}>${n} นาที</option>`).join('')}</select>`;
+const modeSel = v => `<select name="mode"><option value="online" ${v !== 'onsite' ? 'selected' : ''}>💻 ออนไลน์ (Google Meet)</option><option value="onsite" ${v === 'onsite' ? 'selected' : ''}>🏫 พบที่โรงเรียน</option></select>`;
+const topicList = `<datalist id="tops">${SHORT.map(s => `<option value="${s}">`).join('')}</datalist>`;
+const meetField = v => `<label>ลิงก์ Google Meet</label><div class="row"><input name="meet" type="url" value="${esc(v)}" placeholder="https://meet.google.com/xxx-xxxx-xxx" class="sp" style="flex:1;min-width:220px">
+  <a class="btn alt sm" href="https://meet.google.com/new" target="_blank" rel="noopener">สร้างห้อง Meet ใหม่ ↗</a></div>
+  <p class="mute" style="margin:4px 0 0">กด “สร้างห้อง Meet ใหม่” ระบบจะเปิด Google Meet ในแท็บใหม่ แล้วคัดลอกลิงก์ห้องมาวางในช่องนี้</p>`;
 
 /* ---------- หน้าหลัก ---------- */
 function render() {
   const app = $('#app');
-  if (!S) return app.innerHTML = loginHTML();
+  if (!S) { document.title = BASE_TITLE; return app.innerHTML = loginHTML(); }
+  const nN = notifItems().length, bd = n => n ? `<span class="bd">${n}</span>` : '';
   const tabs = isSup()
-    ? [['dash','ภาพรวม'],['obs','บันทึกการนิเทศ'],['sched','นัดโค้ช'],['roster','รายชื่อครู'],['school','รหัสโรงเรียน'],['plc','ชุมชน PLC'],['evid','หลักฐานครู']]
+    ? [['dash','📊 Dashboard'],['obs','📝 บันทึกการนิเทศ'],['sched','📅 นัดโค้ช', nN],['roster','👩‍🏫 รายชื่อครู'],['school','🏫 รหัสโรงเรียน'],['plc','💬 ชุมชน PLC'],['evid','📂 หลักฐานครู']]
     : isHead()
-    ? [['dash','ภาพรวมโรงเรียน'],['obs','รายงานครูในโรงเรียน'],['sched','นัดโค้ช'],['plc','ชุมชน PLC']]
-    : [['obs','ผลการนิเทศของฉัน'],['sched','นัดโค้ช'],['plc','ชุมชน PLC'],['evid','หลักฐานของฉัน']];
+    ? [['dash','📊 Dashboard โรงเรียน'],['obs','📝 รายงานครูในโรงเรียน'],['sched','📅 นัดโค้ช'],['plc','💬 ชุมชน PLC']]
+    : [['home','🏠 หน้าหลัก'],['obs','📝 ผลการนิเทศของฉัน'],['sched','📅 นัดโค้ช', nN],['plc','💬 ชุมชน PLC'],['evid','📂 หลักฐานของฉัน']];
   if (!tabs.some(t => t[0] === tab)) tab = tabs[0][0];
-  app.innerHTML = `<header><h1>ระบบบันทึกการนิเทศเพื่อพัฒนาสมรรถนะการจัดการเรียนรู้สำหรับครูโรงเรียนเอกชนในระบบ<small>สังกัดสำนักงานการศึกษาเอกชนจังหวัดนราธิวาส</small></h1>
-    <span>${esc(S.name)}</span><button class="btn alt sm" data-a="logout">ออกจากระบบ</button></header>
-    <nav>${tabs.map(t => `<button data-a="tab" data-v="${t[0]}" class="${t[0] === tab ? 'on' : ''}">${t[1]}</button>`).join('')}</nav>
-    <main>${({dash, obs, sched, roster, school, plc, evid})[tab]()}</main>`;
+  app.innerHTML = `<header><div class="logo">📘</div><h1>ระบบบันทึกการนิเทศเพื่อพัฒนาสมรรถนะการจัดการเรียนรู้สำหรับครูโรงเรียนเอกชนในระบบ<small>สังกัดสำนักงานการศึกษาเอกชนจังหวัดนราธิวาส</small></h1>
+    <div class="hb"><span class="who"><b>${esc(S.name)}</b><small>${ROLE[S.role] || ''}</small></span>
+    ${isHead() ? '' : `<button class="bell" data-a="bell" aria-label="การแจ้งเตือน ${nN} รายการ">🔔${bd(nN)}</button>`}
+    <button class="bell" data-a="reload" aria-label="โหลดข้อมูลล่าสุด" title="โหลดข้อมูลล่าสุด">↻</button>
+    <button class="btn alt sm" data-a="logout">ออกจากระบบ</button></div></header>
+    <nav>${tabs.map(t => `<button data-a="tab" data-v="${t[0]}" class="${t[0] === tab ? 'on' : ''}">${t[1]}${bd(t[2])}</button>`).join('')}</nav>
+    <main>${({dash, home, obs, sched, roster, school, plc, evid})[tab]()}</main>`;
+  watch();
+  if (tab === 'sched') setTimeout(markSeen, 1200);
 }
 function loginHTML() {
   return `<form class="login" data-f="login">
-    <p class="intro"><strong>ระบบบันทึกการนิเทศครูโรงเรียนเอกชนในระบบ</strong><br><strong>สังกัดสำนักงานการศึกษาเอกชนจังหวัดนราธิวาส</strong></p>
+    <p class="intro"><span style="font-size:40px">📘</span><br><strong>ระบบบันทึกการนิเทศครูโรงเรียนเอกชนในระบบ</strong><br><strong>สังกัดสำนักงานการศึกษาเอกชนจังหวัดนราธิวาส</strong></p>
     <h2>เข้าสู่ระบบ</h2>
     <div class="seg"><button type="button" data-a="role" data-v="sup" class="on">ศึกษานิเทศก์</button><button type="button" data-a="role" data-v="teacher">ครู</button><button type="button" data-a="role" data-v="head">โรงเรียน</button></div>
     <input type="hidden" name="role" value="sup">
@@ -185,45 +288,106 @@ function loginHTML() {
     <p style="text-align:center;margin:14px 0 0"><a href="#" data-a="cfg" class="mute">ตั้งค่า URL เซิร์ฟเวอร์</a></p></form>`;
 }
 
-/* ---------- ภาพรวม ---------- */
+/* ---------- กราฟ Dashboard ---------- */
+function donutSVG(lv, center) {
+  const tot = lv.reduce((a, b) => a + b, 0), R = 54, C = 2 * Math.PI * R; let off = 0;
+  const seg = lv.map((n, i) => { if (!n) return ''; const len = n / tot * C;
+    const s = `<circle cx="70" cy="70" r="${R}" fill="none" stroke="${LVC[i]}" stroke-width="22" stroke-dasharray="${f1(len)} ${f1(C - len)}" stroke-dashoffset="${f1(-off)}" transform="rotate(-90 70 70)"/>`;
+    off += len; return s; }).join('');
+  return `<svg viewBox="0 0 140 140" style="width:170px;flex:none" role="img" aria-label="สัดส่วนระดับคุณภาพ"><circle cx="70" cy="70" r="${R}" fill="none" stroke="#e8f0f1" stroke-width="22"/>${seg}
+   <text x="70" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#0a3f4c">${center}</text><text x="70" y="88" text-anchor="middle" font-size="11" fill="#5b727a">คะแนนเฉลี่ย</text></svg>`;
+}
+function monthSVG(mk) {
+  const W = 420, H = 190, t = 26, b = 46, mx = Math.max(1, ...mk.map(m => m.n)), cw = (W - 20) / mk.length, bw = cw * .5;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%" role="img" aria-label="จำนวนครั้งการนิเทศรายเดือน"><line x1="10" x2="${W - 10}" y1="${H - b}" y2="${H - b}" stroke="#d3dfe1"/>
+   ${mk.map((m, i) => { const x = 10 + cw * i + (cw - bw) / 2, h = m.n / mx * (H - t - b), y = H - b - h;
+     return `<rect x="${f1(x)}" y="${f1(y)}" width="${f1(bw)}" height="${f1(h)}" rx="5" fill="#0e5a6b"/><text x="${f1(x + bw / 2)}" y="${f1(y - 6)}" text-anchor="middle" font-size="12" font-weight="700" fill="#0a3f4c">${m.n}</text>
+     <text x="${f1(x + bw / 2)}" y="${H - b + 17}" text-anchor="middle" font-size="12" fill="#5b727a">${m.lab}</text>${m.n ? `<text x="${f1(x + bw / 2)}" y="${H - b + 34}" text-anchor="middle" font-size="11" font-weight="700" fill="#b07800">★${m.avg.toFixed(2)}</text>` : ''}`; }).join('')}</svg>`;
+}
+const spark = v => { if (v.length < 2) return ''; const W = 80, H = 22;
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true"><polyline points="${v.map((a, i) => f1(2 + i * (W - 4) / (v.length - 1)) + ',' + f1(H - 2 - (Math.max(1, a) - 1) / 3 * (H - 4))).join(' ')}" fill="none" stroke="#0e5a6b" stroke-width="2" stroke-linejoin="round"/></svg>`; };
+const miniAppt = x => { const d = new Date(x.date);
+  return `<div class="mini"><div class="dbox"><b>${d.getDate()}</b><span>${d.toLocaleDateString('th-TH', {month:'short'})}</span></div><div class="sp"><b>${esc(x.teacher)}</b> ${stTag(x)}<div class="mute">🕘 ${esc(x.time)}–${endT(x)} น. · ${modeTxt(modeOf(x))} · ${esc(x.topic || '')}</div></div></div>`; };
+
+/* ---------- Dashboard ศน. / ผู้บริหาร ---------- */
 function dash() {
-  const sup = isSup(),
-    T = L('roster').filter(t => sup || t.school === S.name),
-    O = L('obs').filter(x => sup || (x.ret && inSchool(x))),
-    up = L('sched').filter(x => (sup || inSchool(x)) && x.status !== 'เสร็จสิ้น' && x.status !== 'ยกเลิก' && x.date >= today());
-  const by = {}; O.forEach(x => (by[x.school || '-'] = by[x.school || '-'] || []).push(x._avg || 0));
-  const rows = T.map(t => {
-    const o = O.filter(x => tmatch(x, t)).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
-    const l = o[o.length - 1];
-    return `<tr><td>${esc(t.name)}<div class="mute">${esc(t.school)}</div></td><td>${o.length}</td><td>${l ? lvTag(l._avg || 0) : '<span class="tag warn">ยังไม่นิเทศ</span>'}</td></tr>`;
+  const sup = isSup();
+  const T = L('roster').filter(t => sup ? (!fs || t.school === fs) : t.school === S.name);
+  const O = L('obs').filter(x => sup ? (!fs || schOf(x) === fs) : (x.ret && inSchool(x)));
+  const SC = L('sched').filter(x => sup ? (!fs || schOf(x) === fs) : inSchool(x));
+  const pend = SC.filter(x => x.status === 'รอยืนยัน');
+  const up = SC.filter(x => isConf(x) && x.date >= today()).sort(byDT);
+  const cov = T.filter(t => O.some(x => tmatch(x, t))).length;
+  const avg = mean(O.map(x => x._avg || 0));
+  const lv = [0, 0, 0, 0]; O.forEach(x => { const a = x._avg || 0; lv[a >= 3.5 ? 0 : a >= 2.5 ? 1 : a >= 1.5 ? 2 : 3]++; });
+  const rub = RUBRIC.map((_, i) => mean(O.map(x => (x.scores || [])[i]).filter(v => v > 0)));
+  const pos = rub.filter(v => v > 0), wi = pos.length ? rub.indexOf(Math.min(...pos)) : -1, bi = pos.length ? rub.indexOf(Math.max(...pos)) : -1;
+  const mk = [], d0 = new Date();
+  for (let i = 5; i >= 0; i--) { const d = new Date(d0.getFullYear(), d0.getMonth() - i, 1), k = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'), a = O.filter(x => (x.date || '').startsWith(k));
+    mk.push({lab: d.toLocaleDateString('th-TH', {month:'short'}), n: a.length, avg: mean(a.map(x => x._avg || 0))}); }
+  const bySch = sup && !fs ? Object.entries(grp(O, x => schOf(x) || '-')).map(([s, a]) => [s, mean(a.map(x => x._avg || 0)), a.length]).sort((a, b) => b[1] - a[1]) : [];
+  const rows = T.slice().sort((a, b) => th(a.school, b.school) || th(a.name, b.name)).map(t => {
+    const o = O.filter(x => tmatch(x, t)).sort((a, b) => (a.date || '').localeCompare(b.date || '')), l = o[o.length - 1], p = o[o.length - 2];
+    const d = l && p ? (l._avg || 0) - (p._avg || 0) : null;
+    return `<tr><td>${esc(t.name)}${sup && !fs ? `<div class="mute">${esc(t.school)}</div>` : ''}</td><td>${o.length}</td><td>${l ? lvTag(l._avg || 0) : '<span class="tag warn">ยังไม่นิเทศ</span>'}</td>
+     <td>${d === null ? '<span class="mute">-</span>' : d > 0.004 ? `<b style="color:var(--ok)">▲ ${d.toFixed(2)}</b>` : d < -0.004 ? `<b style="color:var(--bad)">▼ ${Math.abs(d).toFixed(2)}</b>` : '<span class="mute">● คงที่</span>'}</td>
+     <td>${spark(o.slice(-6).map(x => x._avg || 0))}</td><td>${l ? `<button class="btn alt sm" data-a="vobs" data-id="${l.id}">ดู</button>` : ''}</td></tr>`;
   }).join('');
-  return `<h2>${sup ? 'ภาพรวม' : 'ภาพรวมโรงเรียน'}</h2><div class="stats">
-   <div class="stat"><b>${T.length}</b>ครูในระบบ</div><div class="stat"><b>${O.length}</b>ครั้งที่นิเทศ</div>
-   <div class="stat"><b>${O.filter(x => x.ret).length}</b>ส่งผลคืนครูแล้ว</div><div class="stat"><b>${up.length}</b>นัดโค้ชที่จะถึง</div></div>
-   <div class="card"><h3 style="margin-top:0">คะแนนเฉลี่ยรายโรงเรียน (เต็ม 4)</h3>${Object.keys(by).length ? Object.entries(by).map(([s, a]) => { const m = a.reduce((x, y) => x + y, 0) / a.length;
-     return `<div class="row" style="margin:6px 0"><span style="width:200px">${esc(s)}</span><div class="bar sp"><i style="width:${m / 4 * 100}%"></i></div><b>${m.toFixed(2)}</b></div>`; }).join('') : `<div class="empty">${sup ? 'ยังไม่มีผลการนิเทศ เริ่มที่แท็บ “บันทึกการนิเทศ”' : 'ยังไม่มีผลการนิเทศที่ ศน. ส่งคืน'}</div>`}</div>
-   <div class="card wrap"><h3 style="margin-top:0">ความก้าวหน้ารายครู</h3><table><tr><th>ครู</th><th>ครั้ง</th><th>คะแนนล่าสุด</th></tr>${rows || '<tr><td colspan="3" class="mute">ยังไม่มีรายชื่อครูในโรงเรียนนี้</td></tr>'}</table></div>`;
+  return `<div class="row" style="margin-bottom:14px"><h2 class="sp" style="margin:0">📊 ${sup ? 'Dashboard ภาพรวมการนิเทศ' : 'Dashboard ' + esc(S.name)}</h2>${sup ? `<div style="min-width:240px">${schoolSel()}</div>` : ''}</div>
+   ${sup && pend.length ? `<div class="alert warn row"><span class="sp">🔔 มีคำขอรับการโค้ชจากครูรอยืนยัน <b>${pend.length}</b> รายการ</span><button class="btn sm" data-a="goto" data-v="sched">ไปพิจารณา</button></div>` : ''}
+   <div class="kpis">${kpi('👩‍🏫', T.length, 'ครูในระบบ')}${sup ? kpi('🏫', fs ? 1 : new Set(T.map(t => t.school)).size, 'โรงเรียน') : ''}${kpi('📝', O.length, 'ครั้งที่นิเทศ', sup ? `ส่งคืนครูแล้ว ${O.filter(x => x.ret).length}` : '')}
+   ${kpi('🎯', T.length ? Math.round(cov / T.length * 100) + '%' : '-', 'ครูได้รับการนิเทศ', `${cov} จาก ${T.length} คน`)}${kpi('⭐', O.length ? avg.toFixed(2) : '-', 'คะแนนเฉลี่ย (เต็ม 4)', O.length ? lvl(avg)[0] : '')}${kpi('📅', up.length, 'นัดโค้ชที่จะถึง', pend.length ? `รอยืนยัน ${pend.length}` : '')}</div>
+   <div class="grid2"><div class="card"><h3>ระดับคุณภาพการจัดการเรียนรู้</h3>${O.length ? `<div class="row" style="gap:20px;justify-content:center">${donutSVG(lv, avg.toFixed(2))}<div class="lg">${LVN.map((n, i) => `<div><i style="background:${LVC[i]}"></i>${n} <b>${lv[i]}</b> <span class="mute">(${Math.round(lv[i] / O.length * 100)}%)</span></div>`).join('')}</div></div>` : '<div class="empty">ยังไม่มีผลการนิเทศ</div>'}</div>
+   <div class="card"><h3>คะแนนเฉลี่ยรายประเด็น</h3>${O.length ? rub.map((v, i) => `<div class="rbar"><span>${i + 1}. ${SHORT[i]}${i === bi ? ' ⭐' : i === wi ? ' 🎯' : ''}</span><div class="bar"><i style="width:${v / 4 * 100}%;background:${colOf(v)}"></i></div><b>${v ? v.toFixed(2) : '-'}</b></div>`).join('') + '<div class="mute">⭐ จุดแข็ง · 🎯 ประเด็นที่ควรพัฒนาเป็นลำดับแรก</div>' : '<div class="empty">ยังไม่มีข้อมูล</div>'}</div></div>
+   <div class="grid2"><div class="card"><h3>การนิเทศรายเดือน (6 เดือนล่าสุด)</h3>${monthSVG(mk)}</div>
+   <div class="card"><h3>นัดโค้ชที่จะถึง</h3>${up.length ? up.slice(0, 5).map(miniAppt).join('') + (up.length > 5 ? `<div class="mute">และอีก ${up.length - 5} นัด</div>` : '') : '<div class="empty">ยังไม่มีนัดที่จะถึง</div>'}
+    <div class="row" style="margin-top:8px"><span class="sp"></span><button class="btn alt sm" data-a="goto" data-v="sched">ดูนัดทั้งหมด</button></div></div></div>
+   ${bySch.length ? `<div class="card"><h3>คะแนนเฉลี่ยรายโรงเรียน <span class="mute">(คลิกเพื่อดูบันทึกของโรงเรียน)</span></h3>${bySch.map(([s, m, n]) => `<div class="rbar sbar" data-a="gos" data-v="${esc(s)}"><span>🏫 ${esc(s)} <span class="mute">(${n} ครั้ง)</span></span><div class="bar"><i style="width:${m / 4 * 100}%;background:${colOf(m)}"></i></div><b>${m.toFixed(2)}</b></div>`).join('')}</div>` : ''}
+   <div class="card wrap"><h3>ความก้าวหน้ารายครู</h3><table><tr><th>ครู</th><th>ครั้ง</th><th>คะแนนล่าสุด</th><th>เทียบครั้งก่อน</th><th>แนวโน้ม</th><th></th></tr>${rows || '<tr><td colspan="6" class="mute">ยังไม่มีรายชื่อครู</td></tr>'}</table></div>`;
+}
+
+/* ---------- หน้าหลักของครู ---------- */
+function home() {
+  const O = L('obs').filter(x => x.ret && mine(x)).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+  const last = O[O.length - 1], prev = O[O.length - 2], a = last ? last._avg || 0 : 0;
+  const U = L('sched').filter(x => mine(x) && SCH_ACTIVE(x) && x.date >= today()).sort(byDT);
+  const nx = U.find(x => isConf(x) && x.status !== 'เลื่อนนัด'), mv = U.filter(x => x.status === 'เลื่อนนัด'), wait = U.filter(x => x.status === 'รอยืนยัน');
+  const dl = last && prev ? a - (prev._avg || 0) : null;
+  return `<div class="welcome"><div><div class="mute">ยินดีต้อนรับ</div><h2 style="margin:0">คุณครู${esc(S.name)}</h2><div class="mute">${esc(myRoster().school || '')}</div></div><button class="btn" data-a="nreq">+ ขอรับการโค้ช</button></div>
+   ${mv.length ? `<div class="alert info row"><span class="sp">🔁 ศน. เสนอเลื่อนนัด <b>${mv.length}</b> รายการ กรุณากดยอมรับหรือขอเปลี่ยนเวลา</span><button class="btn sm" data-a="goto" data-v="sched">ดูรายละเอียด</button></div>` : ''}
+   <div class="kpis">${kpi('📝', O.length, 'ครั้งที่ได้รับการนิเทศ')}${kpi('⭐', last ? a.toFixed(2) : '-', 'คะแนนล่าสุด (เต็ม 4)', last ? lvl(a)[0] : '')}
+   ${kpi('📈', dl === null ? '-' : (dl >= 0 ? '+' : '') + dl.toFixed(2), 'เทียบกับครั้งก่อน')}${kpi('📂', L(myEv()).length, 'หลักฐานการพัฒนา')}</div>
+   <div class="grid2"><div class="card"><h3>นัดโค้ชครั้งถัดไป</h3>${nx ? apptCard(nx) : `<div class="empty">ยังไม่มีนัดที่ยืนยันแล้ว<br><button class="btn" data-a="nreq" style="margin-top:10px">ขอรับการโค้ช</button></div>`}
+    ${wait.length ? `<div class="mute" style="margin-top:8px">⏳ คำขอรอ ศน. ยืนยัน ${wait.length} รายการ</div>` : ''}</div>
+   <div class="card"><h3>ภาพรวมรายข้อ (ครั้งล่าสุด)</h3>${last ? radarSVG(last.scores || []) + `<div class="mute" style="font-size:12px">${SHORT.map((s, i) => `${i + 1} ${s}`).join(' · ')}</div>` : '<div class="empty">ยังไม่มีผลการนิเทศที่ ศน. ส่งคืน</div>'}</div></div>
+   ${O.length ? `<div class="card"><h3>พัฒนาการคะแนนเฉลี่ย</h3>${trendSVG(O.slice(-6).map(x => ({d: x.date, a: x._avg || 0})))}
+    <div class="row" style="margin-top:8px"><span class="sp"></span><button class="btn alt" data-a="vobs" data-id="${last.id}">ดูรายงานฉบับล่าสุด</button></div></div>` : ''}`;
 }
 
 /* ---------- การนิเทศ ---------- */
-function obs() {
+function obsList() {
   let O = L('obs').slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   // ครูและผู้บริหารเห็นเฉพาะผลที่ ศน. ส่งคืนแล้ว (ฝั่งเซิร์ฟเวอร์ควรกรองซ้ำด้วย)
-  if (!isSup()) O = O.filter(x => x.ret && canSee(x));
-  if (q) O = O.filter(x => ((x.teacher || '') + (x.school || '') + (x.subject || '')).includes(q));
-  const body = O.map(r => `<tr><td>${fd(r.date)}</td><td>${esc(r.teacher)}<div class="mute">${esc(r.school)}</div></td><td>${esc(r.subject)}</td>
+  if (!isSup()) O = O.filter(x => x.ret && canSee(x)); else if (fs) O = O.filter(x => schOf(x) === fs);
+  if (q) O = O.filter(x => ((x.teacher || '') + (x.school || '') + (x.subject || '') + (x.topic || '') + (x.grade || '')).includes(q));
+  return O;
+}
+function obs() {
+  const O = obsList();
+  const body = O.map(r => `<tr><td>${fd(r.date)}</td><td>${esc(r.teacher)}<div class="mute">${esc(r.school)}</div></td><td>${esc(r.subject)}<div class="mute">${esc(r.grade)}</div></td>
    <td>${lvTag(r._avg || 0)}</td>${isSup() ? `<td>${r.ret ? '<span class="tag ok">ส่งแล้ว</span>' : '<span class="tag">ร่าง</span>'}</td>` : ''}
-   <td><div class="row"><button class="btn alt sm" data-a="vobs" data-id="${r.id}">ดู</button>${isSup() ? `<button class="btn alt sm" data-a="eobs" data-id="${r.id}">แก้ไข</button><button class="btn alt sm" data-a="ret" data-id="${r.id}">${r.ret ? 'ถอนคืน' : 'ส่งคืนครู'}</button><button class="btn bad sm" data-a="dobs" data-id="${r.id}">ลบ</button>` : ''}</div></td></tr>`).join('');
-  return `<h2>${isSup() ? 'บันทึกการนิเทศ' : isHead() ? 'รายงานการนิเทศครูในโรงเรียน' : 'ผลการนิเทศของฉัน'}</h2><div class="row noprint" style="margin-bottom:12px">
-   <input id="q" value="${esc(q)}" placeholder="ค้นหาชื่อครู โรงเรียน วิชา" style="max-width:280px" aria-label="ค้นหา"><span class="sp"></span>
+   <td><div class="row" style="gap:4px"><button class="btn alt sm" data-a="vobs" data-id="${r.id}">ดู</button>${isSup() ? `<button class="btn alt sm" data-a="eobs" data-id="${r.id}">แก้ไข</button><button class="btn alt sm" data-a="ret" data-id="${r.id}">${r.ret ? 'ถอนคืน' : 'ส่งคืนครู'}</button><button class="btn bad sm" data-a="dobs" data-id="${r.id}">ลบ</button>` : ''}</div></td></tr>`).join('');
+  return `<h2>${isSup() ? '📝 บันทึกการนิเทศ' : isHead() ? '📝 รายงานการนิเทศครูในโรงเรียน' : '📝 ผลการนิเทศของฉัน'}</h2><div class="filters noprint">
+   ${searchBox('ค้นหาชื่อครู โรงเรียน วิชา เรื่อง')}${isSup() ? schoolSel() : ''}<span class="sp"></span>
    ${isSup() ? '<button class="btn alt" data-a="csv">ส่งออก CSV</button><button class="btn" data-a="nobs">+ บันทึกการนิเทศ</button>' : ''}</div>
+   ${(q || fs) && isSup() ? `<div class="mute" style="margin-bottom:8px">พบ ${O.length} รายการ${fs ? ' · ' + esc(fs) : ''}</div>` : ''}
    ${O.length ? `<div class="card wrap"><table><tr><th>วันที่</th><th>ครู</th><th>วิชา</th><th>คะแนน</th>${isSup() ? '<th>สถานะ</th>' : ''}<th></th></tr>${body}</table></div>`
-    : `<div class="empty">${isSup() ? 'ยังไม่มีบันทึก กด “+ บันทึกการนิเทศ” เพื่อเริ่ม' : 'ยังไม่มีผลการนิเทศที่ ศน. ส่งคืน'}</div>`}`;
+    : `<div class="empty">${isSup() ? (q || fs ? 'ไม่พบบันทึกตามเงื่อนไข' : 'ยังไม่มีบันทึก กด “+ บันทึกการนิเทศ” เพื่อเริ่ม') : 'ยังไม่มีผลการนิเทศที่ ศน. ส่งคืน'}</div>`}`;
 }
 function obsForm(r = {}) {
-  const T = L('roster'), sc = r.scores || [], gl = (!r.grade || GRADES.includes(r.grade)) ? GRADES : [...GRADES, r.grade];
+  const sc = r.scores || [], gl = (!r.grade || GRADES.includes(r.grade)) ? GRADES : [...GRADES, r.grade];
   return `<form data-f="obs"><h2>${r.id ? 'แก้ไข' : 'บันทึก'}การนิเทศ</h2><input type="hidden" name="id" value="${esc(r.id)}">
-  <div class="g2"><div><label>ครูผู้รับการนิเทศ</label><select name="tuid" required><option value="">เลือกครู</option>${T.map(t => `<option value="${esc(t.id)}" ${r.tuid === t.id ? 'selected' : ''}>${esc(t.name)} (${esc(t.school)})</option>`).join('')}</select></div>
+  <div class="g2"><div><label>ครูผู้รับการนิเทศ</label><select name="tuid" required>${teacherOpts(r.tuid)}</select></div>
   <div><label>วันที่</label><input type="date" name="date" value="${r.date || today()}" required></div>
   <div><label>วิชา / กลุ่มสาระ</label><input name="subject" value="${esc(r.subject)}" required></div>
   <div><label>ระดับชั้น</label><select name="grade"><option value="">เลือกระดับชั้น</option>${gl.map(g => `<option ${r.grade === g ? 'selected' : ''}>${esc(g)}</option>`).join('')}</select></div>
@@ -258,15 +422,15 @@ function obsForm(r = {}) {
   <div class="row" style="margin-top:16px"><button class="btn">บันทึก</button><button type="button" class="btn alt" data-a="close">ยกเลิก</button></div></form>`;
 }
 /* ---------- ส่วนประกอบรายงาน (กราฟ/กำลังใจ/ลายมือชื่อ) ---------- */
-const f1 = x => x.toFixed(1);
+function f1(x) { return x.toFixed(1); }
 function radarSVG(sc) {
-  const cx = 170, cy = 150, R = 100, n = sc.length, ang = i => -Math.PI / 2 + i * 2 * Math.PI / n;
+  const cx = 170, cy = 150, R = 100, n = sc.length || 8, ang = i => -Math.PI / 2 + i * 2 * Math.PI / n;
   const P = (i, v) => [cx + R * v / 4 * Math.cos(ang(i)), cy + R * v / 4 * Math.sin(ang(i))];
   const ring = v => `<polygon points="${sc.map((_, i) => P(i, v).map(f1).join(',')).join(' ')}" fill="none" stroke="#c5d4d7"/>`;
   const lab = sc.map((_, i) => { const [x, y] = P(i, 4.6); return `<text x="${f1(x)}" y="${f1(y)}" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="600" fill="#0a3f4c">${i + 1}</text>`; }).join('');
   const ax = sc.map((_, i) => { const [x, y] = P(i, 4); return `<line x1="${cx}" y1="${cy}" x2="${f1(x)}" y2="${f1(y)}" stroke="#d3dfe1"/>`; }).join('');
   const pts = sc.map((v, i) => P(i, v || 0));
-  return `<svg viewBox="0 0 340 300" role="img" aria-label="กราฟเรดาร์คะแนนรายข้อ" style="width:100%;max-width:340px">${[1,2,3,4].map(ring).join('')}${ax}
+  return `<svg viewBox="0 0 340 300" role="img" aria-label="กราฟเรดาร์คะแนนรายข้อ" style="width:100%;max-width:340px;display:block;margin:auto">${[1,2,3,4].map(ring).join('')}${ax}
    <polygon points="${pts.map(a => a.map(f1).join(',')).join(' ')}" fill="#0e5a6b" fill-opacity=".25" stroke="#0e5a6b" stroke-width="2.5"/>
    ${pts.map(a => `<circle cx="${f1(a[0])}" cy="${f1(a[1])}" r="4" fill="#e8a317" stroke="#0a3f4c"/>`).join('')}${lab}</svg>`;
 }
@@ -333,43 +497,154 @@ function initPads(r = {}) {
 }
 
 /* ---------- นัดโค้ช ---------- */
+function apptCard(x) {
+  const t = isT(), c = STC[x.status] || '', mt = meetOf(x), d = new Date(x.date), future = (x.date || '') >= today();
+  const moved = x.reqDate && (x.reqDate !== x.date || x.reqTime !== x.time);
+  let act = '';
+  if (isConf(x) && mt && x.status !== 'เลื่อนนัด') act += `<a class="btn meet sm" href="${esc(mt)}" target="_blank" rel="noopener">🎥 เข้าร่วม Google Meet</a>`;
+  if (isConf(x) && x.status !== 'เลื่อนนัด' && future) act += `<a class="btn alt sm" href="${esc(gcal(x))}" target="_blank" rel="noopener">📆 เพิ่มลง Google Calendar</a>`;
+  if (t && future) {
+    if (x.status === 'เลื่อนนัด') act += `<button class="btn sm" data-a="tacc" data-id="${x.id}">✅ ยอมรับเวลาใหม่</button>`;
+    if (SCH_ACTIVE(x)) act += `<button class="btn alt sm" data-a="treq" data-id="${x.id}">🔁 ขอเปลี่ยนเวลา</button><button class="btn bad sm" data-a="tcan" data-id="${x.id}">ยกเลิก</button>`;
+  }
+  if (isSup()) {
+    if (x.status === 'รอยืนยัน') act += `<button class="btn sm" data-a="rev" data-id="${x.id}">พิจารณา / ส่งลิงก์</button>`;
+    if (isConf(x)) act += `<button class="btn alt sm" data-a="sdone" data-id="${x.id}">✔ เสร็จสิ้น</button>`;
+    act += `<button class="btn alt sm" data-a="esch" data-id="${x.id}">แก้ไข</button><button class="btn bad sm" data-a="dsch" data-id="${x.id}">ลบ</button>`;
+  }
+  const isNew = t && future && !x.seenT && x.status !== 'รอยืนยัน' && x.cancelBy !== 'teacher';
+  return `<div class="appt s-${c}"><div class="dbox"><b>${d.getDate() || '-'}</b><span>${x.date ? d.toLocaleDateString('th-TH', {month:'short', year:'2-digit'}) : ''}</span></div><div class="sp" style="min-width:0">
+   <div class="row" style="gap:6px"><b class="sp">${esc(x.topic || 'นัดโค้ช')}</b>${stTag(x)}${isNew ? '<span class="tag bad">ใหม่</span>' : ''}</div>
+   ${t ? '' : `<div>👩‍🏫 ${esc(x.teacher)} <span class="mute">${esc(schOf(x))}</span>${x.by === 'teacher' ? ' <span class="tag info">ครูขอเอง</span>' : ''}</div>`}
+   <div class="mute">🕘 ${fdl(x.date)} · ${esc(x.time || '-')}–${endT(x)} น. · ${modeTxt(modeOf(x))}${x.place && modeOf(x) === 'onsite' ? ' · ' + esc(x.place) : ''}</div>
+   ${x.status === 'เลื่อนนัด' && moved ? `<div class="alert info">🔁 ศน. เสนอเวลาใหม่แทนเวลาที่ขอ (${fdl(x.reqDate)} ${esc(x.reqTime)} น.) ${t ? '— กรุณากด “ยอมรับเวลาใหม่” หรือ “ขอเปลี่ยนเวลา”' : '— รอครูยอมรับ'}</div>` : ''}
+   ${x.status === 'ยกเลิก' && x.cancelBy ? `<div class="mute">ยกเลิกโดย${x.cancelBy === 'teacher' ? 'ครู' : ' ศน.'}</div>` : ''}
+   ${x.note ? `<div class="note">💬 ครู: ${nl(x.note)}</div>` : ''}${x.supNote ? `<div class="note">📣 ศน.: ${nl(x.supNote)}</div>` : ''}
+   ${act ? `<div class="row noprint" style="margin-top:8px;gap:6px">${act}</div>` : ''}</div></div>`;
+}
 function sched() {
-  let A = L('sched').slice().sort((a, b) => (a.date || '').localeCompare(b.date || ''));
-  if (!isSup()) A = A.filter(canSee);
-  return `<h2>นัดโค้ช</h2>${isSup() ? '<div class="row noprint" style="margin-bottom:12px"><span class="sp"></span><button class="btn" data-a="nsch">+ นัดหมาย</button></div>' : ''}
-  ${A.length ? `<div class="card wrap"><table><tr><th>วันที่</th><th>เวลา</th><th>ครู</th><th>หัวข้อ/สถานที่</th><th>สถานะ</th>${isSup() ? '<th></th>' : ''}</tr>${A.map(x => `<tr><td>${fd(x.date)}</td><td>${esc(x.time)}</td><td>${esc(x.teacher)}</td><td>${esc(x.topic)}<div class="mute">${esc(x.place)}</div></td>
-   <td><span class="tag ${x.status === 'เสร็จสิ้น' ? 'ok' : x.status === 'ยกเลิก' ? 'bad' : 'warn'}">${esc(x.status)}</span></td>
-   ${isSup() ? `<td><div class="row"><button class="btn alt sm" data-a="esch" data-id="${x.id}">แก้ไข</button><button class="btn bad sm" data-a="dsch" data-id="${x.id}">ลบ</button></div></td>` : ''}</tr>`).join('')}</table></div>` : '<div class="empty">ยังไม่มีนัดโค้ช</div>'}`;
+  const t = isT();
+  let A = L('sched').slice().sort(byDT);
+  if (!isSup()) A = A.filter(canSee); else if (fs) A = A.filter(x => schOf(x) === fs);
+  if (isSup() && q) A = A.filter(x => ((x.teacher || '') + (x.topic || '') + schOf(x)).includes(q));
+  const pend = A.filter(x => x.status === 'รอยืนยัน'), mv = A.filter(x => x.status === 'เลื่อนนัด' && x.date >= today());
+  const up = A.filter(x => isConf(x) && x.status !== 'เลื่อนนัด' && x.date >= today());
+  const rest = A.filter(x => !pend.includes(x) && !mv.includes(x) && !up.includes(x)).reverse();
+  const sec = (h, a) => a.length ? `<div class="sec-h">${h} <span class="tag">${a.length}</span></div>${a.map(apptCard).join('')}` : '';
+  const hist = rest.length ? `<details class="sgrp" style="margin-top:18px"><summary><b class="sp">🗂️ ประวัติ / นัดที่ปิดแล้ว</b><span class="tag">${rest.length}</span></summary><div class="in">${rest.map(apptCard).join('')}</div></details>` : '';
+  if (t) return `<div class="row" style="margin-bottom:10px"><h2 class="sp" style="margin:0">📅 นัดโค้ช</h2><button class="btn" data-a="nreq">+ ขอรับการโค้ช</button></div>
+    <div class="card"><b>ขอรับการโค้ชได้ด้วยตนเอง</b><div class="steps"><div>① เลือกวัน เวลา และเรื่องที่ต้องการ แล้วกดส่งคำขอ</div><div>② ศน. ยืนยันนัด หรือเสนอเวลาใหม่ (เลื่อนนัด)</div><div>③ รับลิงก์ Google Meet ที่หน้านี้ และแจ้งเตือนที่ 🔔</div></div></div>
+    ${sec('🔁 ศน. เสนอเลื่อนนัด — ต้องดำเนินการ', mv)}${sec('⏳ รอ ศน. ยืนยัน', pend)}${sec('✅ นัดที่ยืนยันแล้ว', up)}
+    ${A.length ? '' : '<div class="empty">ยังไม่มีนัดโค้ช กด “+ ขอรับการโค้ช” เพื่อเริ่ม</div>'}${hist}`;
+  return `<h2>📅 นัดโค้ช</h2>${isSup() ? `<div class="filters noprint">${searchBox('ค้นหาชื่อครู หัวข้อ')}${schoolSel()}<span class="sp"></span><button class="btn" data-a="nsch">+ นัดหมาย</button></div>` : ''}
+   ${isSup() && pend.length ? `<div class="alert warn">🔔 มีคำขอรับการโค้ชจากครู ${pend.length} รายการ ตรวจสอบวันเวลา แล้วกด “พิจารณา / ส่งลิงก์” เพื่อยืนยันหรือเลื่อนนัด</div>` : ''}
+   ${sec('🔔 คำขอรอยืนยัน', pend)}${sec('🔁 รอครูยอมรับการเลื่อนนัด', mv)}${sec('📅 นัดที่จะถึง', up)}
+   ${A.length ? '' : '<div class="empty">ยังไม่มีนัดโค้ช</div>'}${hist}`;
+}
+function reqForm(r = {}) {
+  return `<form data-f="req"><h2>${r.id ? '🔁 ขอเปลี่ยนเวลา / แก้ไขคำขอ' : '🙋 ขอรับการโค้ช'}</h2><input type="hidden" name="id" value="${esc(r.id)}">
+  <div class="g2"><div><label>วันที่ต้องการ</label><input type="date" name="date" min="${today()}" value="${r.date || ''}" required></div>
+  <div><label>เวลาเริ่ม</label><input type="time" name="time" value="${r.time || '15:30'}" required></div>
+  <div><label>ระยะเวลา</label>${durSel(r.dur)}</div><div><label>รูปแบบการโค้ช</label>${modeSel(r.mode || 'online')}</div></div>
+  <div id="busy" class="mute" style="margin-top:8px"></div><div id="conf"></div>
+  <label>เรื่องที่ต้องการรับการโค้ช</label><input name="topic" list="tops" value="${esc(r.topic)}" required placeholder="เช่น ตั้งคำถามกระตุ้นคิด">${topicList}
+  <label>รายละเอียด / สิ่งที่ต้องการให้ช่วย</label><textarea name="note" placeholder="เช่น อยากปรับกิจกรรมในแผนหน่วยที่ 3 ให้นักเรียนได้อภิปรายมากขึ้น">${esc(r.note)}</textarea>
+  <p class="mute">เมื่อ ศน. ยืนยัน ลิงก์ Google Meet จะแสดงในหน้า “นัดโค้ช” และมีแจ้งเตือนที่ไอคอน 🔔</p>
+  <div class="row" style="margin-top:12px"><button class="btn">ส่งคำขอ</button><button type="button" class="btn alt" data-a="close">ยกเลิก</button></div></form>`;
+}
+function revForm(r) {
+  return `<form data-f="rev" data-od="${esc(r.date)}" data-ot="${esc(r.time)}"><h2>พิจารณาคำขอรับการโค้ช</h2><input type="hidden" name="id" value="${esc(r.id)}">
+  <div class="card" style="background:#f7fafa"><b>👩‍🏫 ${esc(r.teacher)}</b> <span class="mute">${esc(schOf(r))}</span><div>📌 ${esc(r.topic)}</div>
+   <div class="mute">ครูขอ: ${fdl(r.reqDate || r.date)} เวลา ${esc(r.reqTime || r.time)} น. (${+r.dur || 60} นาที) · ${modeTxt(modeOf(r))}</div>${r.note ? `<div class="note">💬 ${nl(r.note)}</div>` : ''}</div>
+  <div class="g2"><div><label>วันที่</label><input type="date" name="date" value="${esc(r.date)}" required></div><div><label>เวลาเริ่ม</label><input type="time" name="time" value="${esc(r.time)}" required></div>
+  <div><label>ระยะเวลา</label>${durSel(r.dur)}</div><div><label>รูปแบบ</label>${modeSel(modeOf(r))}</div></div>
+  <div id="busy" class="mute" style="margin-top:8px"></div><div id="conf"></div>
+  <p class="mute">หากเปลี่ยนวันหรือเวลา ระบบจะส่งเป็น “เลื่อนนัด” ให้ครูกดยอมรับเวลาใหม่</p>
+  ${meetField(meetOf(r))}
+  <label>สถานที่ (กรณีพบที่โรงเรียน)</label><input name="place" value="${esc(modeOf(r) === 'onsite' ? r.place : '')}">
+  <label>ข้อความถึงครู</label><textarea name="supNote" placeholder="เช่น เตรียมแผนการสอนหน่วยที่ 3 มาด้วยนะคะ">${esc(r.supNote)}</textarea>
+  <div class="row" style="margin-top:16px"><button class="btn" name="act" value="ok" id="okbtn">✅ ยืนยันนัดและส่งลิงก์ให้ครู</button><button class="btn bad" name="act" value="no">ปฏิเสธคำขอ</button><button type="button" class="btn alt" data-a="close">ปิด</button></div></form>`;
 }
 function schForm(r = {}) {
+  const cur = r.status === 'นัดหมาย' ? 'ยืนยันแล้ว' : r.status || 'ยืนยันแล้ว';
   return `<form data-f="sched"><h2>${r.id ? 'แก้ไข' : 'เพิ่ม'}นัดโค้ช</h2><input type="hidden" name="id" value="${esc(r.id)}">
-  <label>ครู</label><select name="tuid" required><option value="">เลือกครู</option>${L('roster').map(t => `<option value="${esc(t.id)}" ${r.tuid === t.id ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}</select>
-  <div class="g2"><div><label>วันที่</label><input type="date" name="date" value="${r.date || today()}" required></div><div><label>เวลา</label><input type="time" name="time" value="${r.time || '09:00'}"></div></div>
-  <label>หัวข้อ</label><input name="topic" value="${esc(r.topic)}"><label>สถานที่ / ลิงก์ประชุม</label><input name="place" value="${esc(r.place)}">
-  <label>สถานะ</label><select name="status">${['นัดหมาย','เสร็จสิ้น','ยกเลิก'].map(s => `<option ${r.status === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
+  <label>ครู</label><select name="tuid" required>${teacherOpts(r.tuid)}</select>
+  <div class="g2"><div><label>วันที่</label><input type="date" name="date" value="${r.date || today()}" required></div><div><label>เวลาเริ่ม</label><input type="time" name="time" value="${r.time || '09:00'}" required></div>
+  <div><label>ระยะเวลา</label>${durSel(r.dur)}</div><div><label>รูปแบบ</label>${modeSel(r.id ? modeOf(r) : 'online')}</div></div>
+  <div id="busy" class="mute" style="margin-top:8px"></div><div id="conf"></div>
+  <label>หัวข้อ</label><input name="topic" list="tops" value="${esc(r.topic)}">${topicList}
+  ${meetField(meetOf(r))}
+  <label>สถานที่ (กรณีพบที่โรงเรียน)</label><input name="place" value="${esc(modeOf(r) === 'onsite' ? r.place : '')}">
+  <label>ข้อความถึงครู</label><textarea name="supNote">${esc(r.supNote)}</textarea>
+  <label>สถานะ</label><select name="status">${['ยืนยันแล้ว','เลื่อนนัด','รอยืนยัน','เสร็จสิ้น','ยกเลิก'].map(s => `<option ${cur === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
   <div class="row" style="margin-top:16px"><button class="btn">บันทึก</button><button type="button" class="btn alt" data-a="close">ยกเลิก</button></div></form>`;
 }
-
-/* ---------- รายชื่อครู ---------- */
-function roster() {
-  const T = L('roster');
-  return `<h2>รายชื่อครู</h2><div class="row noprint" style="margin-bottom:12px"><span class="mute sp">ครูใช้ชื่อ-นามสกุล และรหัสผ่านที่ ศน. กำหนดเพื่อเข้าสู่ระบบ (ระบบไม่แสดงรหัสเดิม ตั้งใหม่ได้ที่ปุ่มแก้ไข)</span><button class="btn" data-a="nros">+ เพิ่มครู</button></div>
-  ${T.length ? `<div class="card wrap"><table><tr><th>ชื่อ-สกุล</th><th>โรงเรียน</th><th>วิชา</th><th>รหัสผ่าน</th><th></th></tr>${T.map(t => `<tr><td>${esc(t.name)}</td><td>${esc(t.school)}</td><td>${esc(t.subject)}</td><td>${t.hasPin ? '<span class="tag ok">ตั้งแล้ว</span>' : '<span class="tag warn">ยังไม่ตั้ง</span>'}</td>
-   <td><div class="row"><button class="btn alt sm" data-a="eros" data-id="${t.id}">แก้ไข</button><button class="btn bad sm" data-a="dros" data-id="${t.id}">ลบ</button></div></td></tr>`).join('')}</table></div>` : '<div class="empty">ยังไม่มีรายชื่อครู กด “+ เพิ่มครู”</div>'}`;
+// ตรวจวันเวลาซ้ำแบบสด ขณะกรอกฟอร์มนัด
+function updConf(fm) {
+  const f = new FormData(fm), r = {id: f.get('id'), date: f.get('date'), time: f.get('time'), dur: f.get('dur')};
+  const b = fm.querySelector('#busy'), c = fm.querySelector('#conf'); if (!b || !c) return;
+  const ok = fm.querySelector('#okbtn');
+  if (ok) ok.textContent = (r.date !== fm.dataset.od || r.time !== fm.dataset.ot) ? '🔁 เลื่อนนัดและส่งลิงก์ให้ครู' : '✅ ยืนยันนัดและส่งลิงก์ให้ครู';
+  if (!r.date) { b.innerHTML = ''; c.innerHTML = ''; return; }
+  const who = x => isSup() ? ' ' + esc(x.teacher) : '';
+  const day = L('sched').filter(x => x.id !== r.id && SCH_ACTIVE(x) && x.date === r.date).sort(byDT);
+  const cf = r.time ? conflicts(r) : [];
+  b.innerHTML = day.length ? `📌 ช่วงเวลาที่มีนัดแล้วใน${fdl(r.date)}: ${day.map(x => `<span class="tag ${STC[x.status] || ''}">${esc(x.time)}–${endT(x)}${who(x)}</span>`).join(' ')}` : `🟢 ${fdl(r.date)} ยังไม่มีนัดอื่น`;
+  c.innerHTML = r.date < today() ? '<div class="alert bad">⚠️ วันที่เลือกผ่านมาแล้ว กรุณาเลือกวันใหม่</div>'
+    : cf.length ? `<div class="alert bad">⚠️ วันเวลานี้ตรงกับนัดที่บันทึกไว้แล้ว (${cf.map(x => esc(x.time) + '–' + endT(x) + who(x)).join(', ')}) กรุณาเปลี่ยนวันหรือเวลา</div>`
+    : r.time ? '<div class="alert ok">✅ ช่วงเวลานี้ว่าง สามารถนัดได้</div>' : '';
 }
-function rosForm(r = {}) {
-  return `<form data-f="roster"><h2>${r.id ? 'แก้ไข' : 'เพิ่ม'}ครู</h2><input type="hidden" name="id" value="${esc(r.id)}">
-  <label>ชื่อ-สกุล</label><input name="name" value="${esc(r.name)}" required><label>โรงเรียน</label><input name="school" value="${esc(r.school)}" required>
-  <label>วิชา / กลุ่มสาระ</label><input name="subject" value="${esc(r.subject)}"><label>${r.id ? 'ตั้งรหัสผ่านใหม่ (เว้นว่างถ้าไม่ต้องการเปลี่ยน)' : 'รหัสผ่านเพื่อเข้าสู่ระบบ (อย่างน้อย 4 ตัวอักษร)'}</label><input name="pin" type="password" autocomplete="new-password" minlength="4" ${r.id && r.hasPin ? '' : 'required'}>
+function markSeen() {
+  if (!S || tab !== 'sched') return;
+  const k = isSup() ? 'seenS' : 'seenT';
+  const it = isSup() ? L('sched').filter(x => x.status === 'ยกเลิก' && x.cancelBy === 'teacher' && !x.seenS)
+    : isT() ? L('sched').filter(x => mine(x) && !x.seenT && x.date >= today() && ['ยืนยันแล้ว','นัดหมาย','ยกเลิก'].includes(x.status)) : [];
+  if (!it.length) return;
+  it.forEach(x => { x[k] = true; api({action:'save', collection:'sched', id:x.id, record:x}).catch(() => {}); });
+  if (!dlg.open && !typing()) render();
+}
+function watch() {
+  const ids = notifItems().map(x => x.id + x.status);
+  if (lastN) { const nw = ids.filter(i => !lastN.includes(i)); if (nw.length) notify(isSup() ? `มีคำขอ/การเปลี่ยนแปลงนัดโค้ชใหม่ ${nw.length} รายการ` : `ศน. ตอบกลับนัดโค้ชของคุณ ${nw.length} รายการ`); }
+  lastN = ids; document.title = (ids.length ? `(${ids.length}) ` : '') + BASE_TITLE;
+}
+
+/* ---------- รายชื่อครู (แยกตามโรงเรียน) ---------- */
+function roster() {
+  let T = L('roster'); if (fs) T = T.filter(t => t.school === fs);
+  if (q) T = T.filter(t => ((t.name || '') + (t.subject || '') + (t.school || '')).includes(q));
+  const G = grp(T, t => t.school || '(ไม่ระบุโรงเรียน)'), keys = Object.keys(G).sort(th), many = keys.length > 4 && !fs && !q;
+  const schPin = s => (L('school').find(x => x.name === s) || {}).hasPin;
+  const nObs = t => L('obs').filter(x => tmatch(x, t)).length;
+  return `<h2>👩‍🏫 รายชื่อครู (แยกตามโรงเรียน)</h2><div class="filters noprint">${searchBox('ค้นหาชื่อครู / วิชา')}${schoolSel()}<span class="sp"></span><button class="btn" data-a="nros">+ เพิ่มครู</button></div>
+  <p class="mute" style="margin-top:0">ครูใช้ชื่อ-นามสกุล และรหัสผ่านที่ ศน. กำหนดเพื่อเข้าสู่ระบบ (ระบบไม่แสดงรหัสเดิม ตั้งใหม่ได้ที่ปุ่มแก้ไข) · พบ ${keys.length} โรงเรียน ${T.length} คน</p>
+  ${keys.length ? keys.map(s => `<details class="sgrp" ${many ? '' : 'open'}><summary><b class="sp">🏫 ${esc(s)}</b><span class="tag">${G[s].length} คน</span>
+    ${s === '(ไม่ระบุโรงเรียน)' ? '' : (schPin(s) ? '<span class="tag ok">มีรหัสโรงเรียน</span>' : '<span class="tag warn">ยังไม่ตั้งรหัสโรงเรียน</span>') + `<button class="btn sm" data-a="nros" data-s="${esc(s)}">+ เพิ่มครูในโรงเรียนนี้</button>`}</summary>
+    <div class="in wrap"><table><tr><th>ชื่อ-สกุล</th><th>วิชา</th><th>นิเทศ</th><th>รหัสผ่าน</th><th></th></tr>${G[s].sort((a, b) => th(a.name, b.name)).map(t => `<tr><td>${esc(t.name)}</td><td>${esc(t.subject)}</td><td>${nObs(t)} ครั้ง</td><td>${t.hasPin ? '<span class="tag ok">ตั้งแล้ว</span>' : '<span class="tag warn">ยังไม่ตั้ง</span>'}</td>
+    <td><div class="row" style="gap:4px"><button class="btn alt sm" data-a="eros" data-id="${t.id}">แก้ไข</button><button class="btn bad sm" data-a="dros" data-id="${t.id}">ลบ</button></div></td></tr>`).join('')}</table></div></details>`).join('')
+   : `<div class="empty">${q || fs ? 'ไม่พบครูตามเงื่อนไข' : 'ยังไม่มีรายชื่อครู กด “+ เพิ่มครู”'}</div>`}`;
+}
+const schDL = () => `<datalist id="schl">${schools().map(s => `<option value="${esc(s)}">`).join('')}</datalist>`;
+const tRow = () => `<div class="trow"><input name="name" placeholder="ชื่อ-สกุล" required aria-label="ชื่อ-สกุล"><input name="subject" placeholder="วิชา / กลุ่มสาระ" aria-label="วิชา"><input name="pin" type="password" placeholder="รหัสผ่าน (≥ 4 ตัว)" minlength="4" required autocomplete="new-password" aria-label="รหัสผ่าน"><button type="button" class="btn bad sm" data-a="delrow" aria-label="ลบแถว">✕</button></div>`;
+function rosForm(r = {}, sch = '') {
+  if (r.id) return `<form data-f="roster"><h2>แก้ไขข้อมูลครู</h2><input type="hidden" name="id" value="${esc(r.id)}">
+  <label>โรงเรียน</label><input name="school" list="schl" value="${esc(r.school)}" required>${schDL()}
+  <label>ชื่อ-สกุล</label><input name="name" value="${esc(r.name)}" required>
+  <label>วิชา / กลุ่มสาระ</label><input name="subject" value="${esc(r.subject)}"><label>ตั้งรหัสผ่านใหม่ (เว้นว่างถ้าไม่ต้องการเปลี่ยน)</label><input name="pin" type="password" autocomplete="new-password" minlength="4" ${r.hasPin ? '' : 'required'}>
+  <div class="row" style="margin-top:16px"><button class="btn">บันทึก</button><button type="button" class="btn alt" data-a="close">ยกเลิก</button></div></form>`;
+  return `<form data-f="roster"><h2>เพิ่มครู</h2><input type="hidden" name="id" value="">
+  <label>โรงเรียน</label><input name="school" list="schl" value="${esc(sch)}" required placeholder="เลือกจากรายการ หรือพิมพ์ชื่อโรงเรียนใหม่">${schDL()}
+  <p class="mute">เพิ่มครูในโรงเรียนเดียวกันได้หลายคนพร้อมกัน กด “+ เพิ่มแถว” · รหัสผ่านอย่างน้อย 4 ตัวอักษร</p>
+  <div id="rows">${tRow()}</div><button type="button" class="btn alt sm" data-a="addrow">+ เพิ่มแถว</button>
   <div class="row" style="margin-top:16px"><button class="btn">บันทึก</button><button type="button" class="btn alt" data-a="close">ยกเลิก</button></div></form>`;
 }
 
 /* ---------- รหัสโรงเรียน (ผู้บริหาร) ---------- */
 function school() {
-  const T = L('school');
-  return `<h2>รหัสโรงเรียน (สำหรับผู้บริหาร)</h2><div class="row noprint" style="margin-bottom:12px"><span class="mute sp">ผู้บริหารเข้าระบบด้วย “ชื่อโรงเรียน” + “รหัสโรงเรียน” เพื่อดูรายงานของครูทุกคนในโรงเรียน ชื่อต้องตรงกับช่อง “โรงเรียน” ในรายชื่อครู</span><button class="btn" data-a="nsl">+ เพิ่มโรงเรียน</button></div>
-  ${T.length ? `<div class="card wrap"><table><tr><th>โรงเรียน</th><th>ครูในระบบ</th><th>รหัส</th><th></th></tr>${T.map(s => `<tr><td>${esc(s.name)}</td><td>${L('roster').filter(t => t.school === s.name).length}</td><td>${s.hasPin ? '<span class="tag ok">ตั้งแล้ว</span>' : '<span class="tag warn">ยังไม่ตั้ง</span>'}</td>
-   <td><div class="row"><button class="btn alt sm" data-a="esl" data-id="${s.id}">แก้ไข</button><button class="btn bad sm" data-a="dsl" data-id="${s.id}">ลบ</button></div></td></tr>`).join('')}</table></div>` : '<div class="empty">ยังไม่มีโรงเรียน กด “+ เพิ่มโรงเรียน”</div>'}`;
+  const T = L('school').slice().sort((a, b) => th(a.name, b.name));
+  return `<h2>🏫 รหัสโรงเรียน (สำหรับผู้บริหาร)</h2><div class="row noprint" style="margin-bottom:12px"><span class="mute sp">ผู้บริหารเข้าระบบด้วย “ชื่อโรงเรียน” + “รหัสโรงเรียน” เพื่อดูรายงานของครูทุกคนในโรงเรียน ชื่อต้องตรงกับช่อง “โรงเรียน” ในรายชื่อครู</span><button class="btn" data-a="nsl">+ เพิ่มโรงเรียน</button></div>
+  ${T.length ? `<div class="card wrap"><table><tr><th>โรงเรียน</th><th>ครูในระบบ</th><th>รหัส</th><th></th></tr>${T.map(s => `<tr><td>${esc(s.name)}</td><td><a href="#" data-a="gor" data-v="${esc(s.name)}">${L('roster').filter(t => t.school === s.name).length} คน</a></td><td>${s.hasPin ? '<span class="tag ok">ตั้งแล้ว</span>' : '<span class="tag warn">ยังไม่ตั้ง</span>'}</td>
+   <td><div class="row" style="gap:4px"><button class="btn alt sm" data-a="esl" data-id="${s.id}">แก้ไข</button><button class="btn bad sm" data-a="dsl" data-id="${s.id}">ลบ</button></div></td></tr>`).join('')}</table></div>` : '<div class="empty">ยังไม่มีโรงเรียน กด “+ เพิ่มโรงเรียน”</div>'}`;
 }
 function schoolForm(r = {}) {
   return `<form data-f="school"><h2>${r.id ? 'แก้ไข' : 'เพิ่ม'}โรงเรียน</h2><input type="hidden" name="id" value="${esc(r.id)}">
@@ -382,7 +657,7 @@ function schoolForm(r = {}) {
 function plc() {
   const P = L('plc').slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const who = x => esc(x.name || 'ศึกษานิเทศก์') + (x.role === 'head' ? ' <span class="tag">ผู้บริหาร</span>' : '');
-  return `<h2>ชุมชนแห่งการเรียนรู้ทางวิชาชีพ (PLC)</h2><form class="card noprint" data-f="plc"><label>แบ่งปันแนวปฏิบัติ / ตั้งคำถาม</label>
+  return `<h2>💬 ชุมชนแห่งการเรียนรู้ทางวิชาชีพ (PLC)</h2><form class="card noprint" data-f="plc"><label style="margin-top:0">แบ่งปันแนวปฏิบัติ / ตั้งคำถาม</label>
   <input name="title" placeholder="หัวข้อ" required style="margin-bottom:6px"><textarea name="body" placeholder="รายละเอียด เช่น กิจกรรมที่ได้ผล ปัญหาที่พบ" required></textarea><button class="btn" style="margin-top:8px">โพสต์</button></form>
   ${P.length ? P.map(p => `<div class="card"><div class="row"><b class="sp">${esc(p.title)}</b>${isSup() || p.uid === S.uid ? `<button class="btn bad sm" data-a="dplc" data-id="${p.id}">ลบ</button>` : ''}</div>
    <div class="mute">${who(p)} · ${fd(p.date)}</div><p>${nl(p.body)}</p>
@@ -392,12 +667,13 @@ function plc() {
 
 /* ---------- หลักฐาน ---------- */
 function evid() {
-  const items = isSup() ? Object.keys(D).filter(k => k.startsWith('evid/')).flatMap(k => L(k).map(x => ({...x, _t: k.split('/')[1]}))) : L(myEv());
+  const nameOf = id => (L('roster').find(t => t.id === id) || {}).name || '', schoolOf = id => (L('roster').find(t => t.id === id) || {}).school || '';
+  let items = isSup() ? Object.keys(D).filter(k => k.startsWith('evid/')).flatMap(k => L(k).map(x => ({...x, _t: k.split('/')[1]}))) : L(myEv());
+  if (isSup() && fs) items = items.filter(x => schoolOf(x._t) === fs);
   items.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-  const nameOf = id => (L('roster').find(t => t.id === id) || {}).name || '';
-  return `<h2>${isSup() ? 'หลักฐานการพัฒนาของครู' : 'หลักฐานของฉัน'}</h2>${isSup() ? '' : '<div class="row noprint" style="margin-bottom:12px"><span class="sp mute">แนบลิงก์แผนการสอน ภาพกิจกรรม หรือผลงานนักเรียน (Google Drive ฯลฯ)</span><button class="btn" data-a="nev">+ เพิ่มหลักฐาน</button></div>'}
+  return `<h2>${isSup() ? '📂 หลักฐานการพัฒนาของครู' : '📂 หลักฐานของฉัน'}</h2>${isSup() ? `<div class="filters noprint">${schoolSel()}</div>` : '<div class="row noprint" style="margin-bottom:12px"><span class="sp mute">แนบลิงก์แผนการสอน ภาพกิจกรรม หรือผลงานนักเรียน (Google Drive ฯลฯ)</span><button class="btn" data-a="nev">+ เพิ่มหลักฐาน</button></div>'}
   ${items.length ? items.map(x => `<div class="card"><div class="row"><b class="sp">${esc(x.title)}</b><span class="tag">${esc(x.type)}</span><button class="btn bad sm" data-a="dev" data-id="${x.id}" data-t="${esc(x._t || S.uid)}">ลบ</button></div>
-   <div class="mute">${isSup() ? esc(nameOf(x._t)) + ' · ' : ''}${fd(x.date)}</div>${x.note ? `<p>${nl(x.note)}</p>` : ''}${/^https?:\/\//.test(x.link || '') ? `<a href="${esc(x.link)}" target="_blank" rel="noopener">เปิดลิงก์หลักฐาน</a>` : ''}</div>`).join('') : '<div class="empty">ยังไม่มีหลักฐาน</div>'}`;
+   <div class="mute">${isSup() ? esc(nameOf(x._t)) + ' · ' + esc(schoolOf(x._t)) + ' · ' : ''}${fd(x.date)}</div>${x.note ? `<p>${nl(x.note)}</p>` : ''}${/^https?:\/\//.test(x.link || '') ? `<a href="${esc(x.link)}" target="_blank" rel="noopener">เปิดลิงก์หลักฐาน</a>` : ''}</div>`).join('') : '<div class="empty">ยังไม่มีหลักฐาน</div>'}`;
 }
 function evForm() {
   return `<form data-f="ev"><h2>เพิ่มหลักฐาน</h2><label>ชื่อหลักฐาน</label><input name="title" required>
@@ -408,13 +684,22 @@ function evForm() {
 
 /* ---------- เหตุการณ์ ---------- */
 const dlg = $('#dlg');
-const open = h => { dlg.innerHTML = h; dlg.showModal(); };
+const open = h => {
+  dlg.innerHTML = h; if (!dlg.open) dlg.showModal();
+  const fm = dlg.querySelector('form[data-f]'); if (fm && ['req','sched','rev'].includes(fm.dataset.f)) updConf(fm);
+};
+const closeDlg = () => { if (dlg.open) dlg.close(); };
 const find = (c, id) => L(c).find(x => x.id === id);
 const csvEsc = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
 const refresh = async () => { await run(load); render(); };
+const typing = () => { const a = document.activeElement; return a && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName); };
+const setSch = async (x, patch, msg) => { if (await run(() => save('sched', {...x, ...patch}), msg)) { closeDlg(); render(); } };
 
 const A = {
-  tab: el => { tab = el.dataset.v; q = ''; render(); },
+  tab: el => { tab = el.dataset.v; q = ''; render(); window.scrollTo(0, 0); },
+  goto: el => { closeDlg(); tab = el.dataset.v; q = ''; render(); window.scrollTo(0, 0); },
+  gos: el => { fs = el.dataset.v; tab = 'obs'; q = ''; render(); window.scrollTo(0, 0); },
+  gor: el => { fs = el.dataset.v; tab = 'roster'; q = ''; render(); },
   role: el => {
     const sup = el.dataset.v === 'sup', hd = el.dataset.v === 'head';
     document.querySelectorAll('.seg button').forEach(b => b.classList.toggle('on', b === el));
@@ -435,16 +720,33 @@ const A = {
     }[r] || [];
     open(`<h2>ลืมรหัสผ่าน (${esc(m[0])})</h2><p>${esc(m[1])}</p><div class="row" style="margin-top:16px"><button type="button" class="btn" data-a="close">ปิด</button></div>`);
   },
-  logout: async () => { try { await api({action:'logout'}); } catch (e) {} S = null; D = {}; sessionStorage.removeItem('s'); render(); },
-  close: () => dlg.close(),
+  logout: async () => { try { await api({action:'logout'}); } catch (e) {} S = null; D = {}; fs = ''; lastN = null; sessionStorage.removeItem('s'); render(); },
+  reload: async () => { await refresh(); toast('อัปเดตข้อมูลล่าสุดแล้ว'); },
+  bell: () => {
+    try { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission(); } catch (e) {}
+    const it = notifItems();
+    open(`<h2>🔔 การแจ้งเตือน</h2>${it.length ? it.map(apptCard).join('') : '<div class="empty">ไม่มีการแจ้งเตือนใหม่</div>'}
+     <div class="row" style="margin-top:12px"><button class="btn alt" data-a="goto" data-v="sched">ไปหน้านัดโค้ช</button><button class="btn alt" data-a="close">ปิด</button></div>`);
+  },
+  close: () => closeDlg(),
   print: () => window.print(),
   nobs: () => { open(obsForm()); initPads(); }, eobs: el => { const o = find('obs', el.dataset.id); open(obsForm(o)); initPads(o); },
   clrpad: el => { const c = dlg.querySelector('canvas[data-k="' + el.dataset.k + '"]'); if (c) { c.getContext('2d').clearRect(0, 0, c.width, c.height); c.dataset.has = ''; } }, vobs: el => open(obsView(find('obs', el.dataset.id))),
   ret: async el => { const r = find('obs', el.dataset.id); if (await run(() => save('obs', {...r, ret: !r.ret}), r.ret ? 'ถอนคืนแล้ว' : 'ส่งผลคืนครูแล้ว')) render(); },
   dobs: async el => { if (confirm('ลบบันทึกนี้?') && await run(() => del('obs', el.dataset.id), 'ลบแล้ว')) render(); },
+  // นัดโค้ช
   nsch: () => open(schForm()), esch: el => open(schForm(find('sched', el.dataset.id))),
-  dsch: async el => { if (confirm('ลบนัดนี้?') && await run(() => del('sched', el.dataset.id), 'ลบแล้ว')) render(); },
-  nros: () => open(rosForm()), eros: el => open(rosForm(find('roster', el.dataset.id))),
+  dsch: async el => { if (confirm('ลบนัดนี้?') && await run(() => del('sched', el.dataset.id), 'ลบแล้ว')) { closeDlg(); render(); } },
+  rev: el => open(revForm(find('sched', el.dataset.id))),
+  sdone: el => setSch(find('sched', el.dataset.id), {status: 'เสร็จสิ้น'}, 'บันทึกว่าเสร็จสิ้นแล้ว'),
+  nreq: () => open(reqForm()),
+  treq: el => open(reqForm(find('sched', el.dataset.id))),
+  tacc: el => setSch(find('sched', el.dataset.id), {status: 'ยืนยันแล้ว', seenT: true, accAt: new Date().toISOString()}, 'ยืนยันเวลาใหม่แล้ว'),
+  tcan: el => { if (confirm('ยกเลิกนัดนี้?')) setSch(find('sched', el.dataset.id), {status: 'ยกเลิก', cancelBy: 'teacher', seenT: true, seenS: false}, 'ยกเลิกนัดแล้ว'); },
+  // รายชื่อครู
+  nros: el => open(rosForm({}, el.dataset.s || fs || '')), eros: el => open(rosForm(find('roster', el.dataset.id))),
+  addrow: () => { $('#rows').insertAdjacentHTML('beforeend', tRow()); const r = $('#rows').lastElementChild; r && r.querySelector('input').focus(); },
+  delrow: el => { if ($('#rows').children.length > 1) el.closest('.trow').remove(); },
   dros: async el => { if (confirm('ลบครูคนนี้?') && await run(() => del('roster', el.dataset.id), 'ลบแล้ว')) render(); },
   nsl: () => open(schoolForm()), esl: el => open(schoolForm(find('school', el.dataset.id))),
   dsl: async el => { if (confirm('ลบโรงเรียนนี้?') && await run(() => del('school', el.dataset.id), 'ลบแล้ว')) render(); },
@@ -453,22 +755,24 @@ const A = {
   nev: () => open(evForm()),
   dev: async el => { const c = 'evid/' + el.dataset.t + '/items'; if (confirm('ลบหลักฐานนี้?') && await run(() => del(c, el.dataset.id), 'ลบแล้ว')) render(); },
   csv: () => {
-    const h = ['วันที่','ครู','โรงเรียน','วิชา','คะแนนเฉลี่ย','ส่งคืนครู'];
-    const rows = L('obs').map(r => [r.date, r.teacher, r.school, r.subject, r._avg, r.ret ? 'ใช่' : 'ไม่']);
+    const h = ['วันที่','ครู','โรงเรียน','วิชา','ระดับชั้น','เรื่อง', ...SHORT.map((s, i) => 'ข้อ' + (i + 1) + ' ' + s),'คะแนนเฉลี่ย','ระดับ','ส่งคืนครู'];
+    const rows = obsList().map(r => [r.date, r.teacher, r.school, r.subject, r.grade, r.topic, ...RUBRIC.map((_, i) => (r.scores || [])[i] || ''), r._avg, lvl(r._avg || 0)[0], r.ret ? 'ใช่' : 'ไม่']);
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + [h, ...rows].map(r => r.map(csvEsc).join(',')).join('\n')], {type:'text/csv'}));
-    a.download = 'สรุปนิเทศ-' + today() + '.csv'; a.click();
+    a.download = 'สรุปนิเทศ-' + (fs ? fs + '-' : '') + today() + '.csv'; a.click();
   }
 };
 document.addEventListener('click', e => { const el = e.target.closest('[data-a]'); if (!el) return; e.preventDefault(); A[el.dataset.a] && A[el.dataset.a](el); });
 // ค้นหา: ไม่รีเรนเดอร์ระหว่างพิมพ์ภาษาไทยด้วย IME รอจนจบ composition
-function doSearch(el) { q = el.value.trim(); const p = el.selectionStart; render(); const n = $('#q'); n.focus(); n.setSelectionRange(p, p); }
-document.addEventListener('input', e => { if (e.target.id === 'q' && !e.isComposing) doSearch(e.target); });
+function doSearch(el) { q = el.value.trim(); const p = el.selectionStart; render(); const n = $('#q'); if (n) { n.focus(); n.setSelectionRange(p, p); } }
+const confForm = t => { const fm = t.closest && t.closest('form[data-f]'); if (fm && ['req','sched','rev'].includes(fm.dataset.f)) updConf(fm); };
+document.addEventListener('input', e => { if (e.target.id === 'q' && !e.isComposing) return doSearch(e.target); confForm(e.target); });
 document.addEventListener('compositionend', e => { if (e.target.id === 'q') doSearch(e.target); });
+document.addEventListener('change', e => { if (e.target.id === 'fs') { fs = e.target.value; return render(); } confForm(e.target); });
 
 const F = {
   login: async f => {
     const b = Object.fromEntries(f);
-    if (await run(async () => { const j = await api({action:'login', ...b}); S = {token:j.token, role:j.role, uid:j.uid, name:j.name}; sessionStorage.setItem('s', JSON.stringify(S)); await load(); })) render();
+    if (await run(async () => { const j = await api({action:'login', ...b}); S = {token:j.token, role:j.role, uid:j.uid, name:j.name}; sessionStorage.setItem('s', JSON.stringify(S)); await load(); })) { lastN = null; render(); }
   },
   obs: async (f, form) => {
     const t = find('roster', f.get('tuid')), old = find('obs', f.get('id')) || {};
@@ -483,17 +787,58 @@ const F = {
     if (JSON.stringify(r).length > 45000) return toast('ลายมือชื่อมีขนาดใหญ่เกินไป กรุณาล้างแล้วเซ็นใหม่ให้เส้นสั้นลง', true);
     if (await run(() => save('obs', r), 'บันทึกแล้ว')) { dlg.close(); render(); }
   },
+  // ศน. สร้าง/แก้ไขนัดเอง
   sched: async f => {
-    const t = find('roster', f.get('tuid'));
+    const t = find('roster', f.get('tuid')), old = find('sched', f.get('id')) || {};
     if (!t) return toast('กรุณาเลือกครู', true);
-    const r = {id: f.get('id') || undefined, tuid: t.id, teacher: t.name, date: f.get('date'), time: f.get('time'), topic: f.get('topic'), place: f.get('place'), status: f.get('status')};
+    const r = {...old, id: f.get('id') || undefined, tuid: t.id, teacher: t.name, school: t.school, date: f.get('date'), time: f.get('time'), dur: +f.get('dur'), mode: f.get('mode'),
+      meet: (f.get('meet') || '').trim(), place: f.get('place'), topic: f.get('topic'), supNote: f.get('supNote'), status: f.get('status'), by: old.by || 'sup', seenT: false};
+    if (r.meet && !okMeet(r.meet)) return toast('ลิงก์ต้องขึ้นต้นด้วย https://meet.google.com/', true);
+    if (r.mode === 'online' && isConf(r) && !r.meet) return toast('กรุณาใส่ลิงก์ Google Meet สำหรับนัดออนไลน์', true);
+    if (SCH_ACTIVE(r) && conflicts(r).length && !confirm('วันเวลานี้ตรงกับนัดอื่นที่มีอยู่แล้ว ต้องการบันทึกต่อหรือไม่?')) return;
     if (await run(() => save('sched', r), 'บันทึกแล้ว')) { dlg.close(); render(); }
   },
+  // ครูส่งคำขอรับการโค้ช
+  req: async f => {
+    const old = find('sched', f.get('id')) || {};
+    const r = {...old, id: f.get('id') || undefined, tuid: S.uid, teacher: S.name, school: old.school || myRoster().school || '', date: f.get('date'), time: f.get('time'), dur: +f.get('dur'),
+      mode: f.get('mode'), topic: (f.get('topic') || '').trim(), note: f.get('note'), status: 'รอยืนยัน', by: 'teacher', reqDate: f.get('date'), reqTime: f.get('time'),
+      reqAt: new Date().toISOString(), seenT: true, cancelBy: ''};
+    if (r.date < today()) return toast('วันที่เลือกผ่านมาแล้ว กรุณาเลือกวันใหม่', true);
+    if (conflicts(r).length) return toast('วันเวลาที่เลือกตรงกับนัดที่มีอยู่แล้ว กรุณาเปลี่ยนวันหรือเวลา', true);
+    if (await run(() => save('sched', r), 'ส่งคำขอแล้ว รอ ศน. ยืนยัน')) { dlg.close(); tab = 'sched'; render(); }
+  },
+  // ศน. ยืนยัน / เลื่อนนัด / ปฏิเสธ
+  rev: async (f, form, sub) => {
+    const r = find('sched', f.get('id')); if (!r) return;
+    const supNote = f.get('supNote');
+    if (sub && sub.value === 'no') {
+      if (!confirm('ปฏิเสธคำขอนี้? ครูจะได้รับแจ้งเตือน')) return;
+      return setSch(r, {status: 'ยกเลิก', cancelBy: 'sup', supNote, seenT: false, decidedAt: new Date().toISOString()}, 'ปฏิเสธคำขอแล้ว');
+    }
+    const n = {date: f.get('date'), time: f.get('time'), dur: +f.get('dur'), mode: f.get('mode'), meet: (f.get('meet') || '').trim(), place: f.get('place'), supNote};
+    if (n.date < today()) return toast('วันที่ผ่านมาแล้ว กรุณาเลือกวันใหม่', true);
+    if (n.mode === 'online' && !okMeet(n.meet)) return toast('กรุณาใส่ลิงก์ Google Meet (https://meet.google.com/...)', true);
+    if (conflicts({...r, ...n}).length && !confirm('วันเวลานี้ตรงกับนัดอื่นที่มีอยู่แล้ว ต้องการยืนยันต่อหรือไม่?')) return;
+    const moved = n.date !== r.date || n.time !== r.time;
+    setSch(r, {...n, status: moved ? 'เลื่อนนัด' : 'ยืนยันแล้ว', seenT: false, cancelBy: '', decidedAt: new Date().toISOString()}, moved ? 'ส่งเวลาใหม่และลิงก์ให้ครูแล้ว' : 'ยืนยันนัดและส่งลิงก์ให้ครูแล้ว');
+  },
   roster: async f => {
-    const r = {id: f.get('id') || undefined, name: f.get('name').trim(), school: f.get('school').trim(), subject: f.get('subject'), pin: f.get('pin').trim()};
-    if (!r.pin) delete r.pin; // เว้นว่าง = ไม่เปลี่ยนรหัส (เซิร์ฟเวอร์เก็บแฮชเดิมไว้)
-    if (L('roster').some(x => x.name === r.name && x.id !== r.id)) return toast('มีชื่อนี้อยู่แล้ว', true);
-    if (await run(() => save('roster', r), 'บันทึกแล้ว')) { dlg.close(); render(); }
+    const id = f.get('id'), school = (f.get('school') || '').trim();
+    if (id) {
+      const r = {...find('roster', id), id, name: f.get('name').trim(), school, subject: f.get('subject'), pin: (f.get('pin') || '').trim()};
+      if (!r.pin) delete r.pin; // เว้นว่าง = ไม่เปลี่ยนรหัส (เซิร์ฟเวอร์เก็บแฮชเดิมไว้)
+      if (L('roster').some(x => x.name === r.name && x.id !== r.id)) return toast('มีชื่อนี้อยู่แล้ว', true);
+      if (await run(() => save('roster', r), 'บันทึกแล้ว')) { dlg.close(); render(); }
+      return;
+    }
+    const subs = f.getAll('subject'), pins = f.getAll('pin');
+    const rows = f.getAll('name').map((n, i) => ({name: n.trim(), school, subject: (subs[i] || '').trim(), pin: (pins[i] || '').trim()})).filter(r => r.name);
+    if (!rows.length) return toast('กรุณากรอกชื่อครูอย่างน้อย 1 คน', true);
+    const nm = rows.map(r => r.name), dup = nm.find((n, i) => nm.indexOf(n) !== i || L('roster').some(x => x.name === n));
+    if (dup) return toast('มีชื่อ “' + dup + '” อยู่แล้ว', true);
+    const noSch = !L('school').some(s => s.name === school);
+    if (await run(async () => { for (const r of rows) await save('roster', r); }, `เพิ่มครู ${rows.length} คนใน ${school} แล้ว` + (noSch ? ' · อย่าลืมตั้งรหัสโรงเรียนในแท็บ “รหัสโรงเรียน”' : ''))) { dlg.close(); render(); }
   },
   school: async f => {
     const r = {id: f.get('id') || undefined, name: f.get('name').trim(), pin: f.get('pin').trim()};
@@ -505,8 +850,10 @@ const F = {
   cm: async f => { if (await run(() => save('plccm', {pid: f.get('pid'), text: f.get('text'), date: new Date().toISOString(), uid: S.uid, name: S.name, role: S.role}))) render(); },
   ev: async f => { if (await run(() => save(myEv(), {title: f.get('title'), type: f.get('type'), date: f.get('date'), link: f.get('link'), note: f.get('note')}), 'บันทึกแล้ว')) { dlg.close(); render(); } }
 };
-document.addEventListener('submit', e => { const f = e.target.dataset.f; if (!f) return; e.preventDefault(); const b = e.submitter; if (b) b.disabled = true; Promise.resolve(F[f](new FormData(e.target), e.target)).finally(() => { if (b) b.disabled = false; }); });
+document.addEventListener('submit', e => { const f = e.target.dataset.f; if (!f) return; e.preventDefault(); const b = e.submitter; if (b) b.disabled = true; Promise.resolve(F[f](new FormData(e.target), e.target, b)).finally(() => { if (b) b.disabled = false; }); });
 
+// ดึงข้อมูลใหม่ทุก 60 วินาที เพื่อแจ้งเตือนคำขอ/การยืนยันนัด (ข้ามขณะเปิดฟอร์มหรือกำลังพิมพ์)
+setInterval(async () => { if (!S || dlg.open || typing() || document.hidden) return; try { await load(); render(); } catch (e) {} }, 60000);
 if (S) { render(); refresh(); } else render();
 </script>
 </body>
